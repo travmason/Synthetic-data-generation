@@ -1,0 +1,1 @@
+User: Hi DanielGPT3 error: Incorrect API key provided: sk-4DjyL***************************************MDMu. You can find your API key at https://beta.openai.com.

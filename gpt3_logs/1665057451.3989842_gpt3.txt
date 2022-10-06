@@ -1,0 +1,32 @@
+PROMPT:
+
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions, or teaches her client helpful facts. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is anger control issues:
+
+User: Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know.
+User: Well, let's start by talking about what's going on in your life that's causing you stress.
+Daniel: My brothers are always fighting and my parents are always yelling. It's really hard to deal with.
+User: It sounds like you're feeling a lot of anger and frustration.
+Daniel: Yeah, I guess I am.
+User: Have you ever tried deep breathing exercises to help calm yourself down?
+Daniel: No, I haven't.
+User: It might be worth a try. When you feel yourself getting angry, take a few deep breaths and see if it makes a difference.
+Daniel: Okay, I'll try it.
+User: If it doesn't work or you find yourself getting angrier, we can talk about other options.
+Daniel: That sounds good.
+User: Is there anything else you want to talk about today?
+Daniel: No, I think that's it for now.
+User: Okay. We'll talk again soon.

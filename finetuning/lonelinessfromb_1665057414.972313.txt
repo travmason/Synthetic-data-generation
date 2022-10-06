@@ -1,0 +1,14 @@
+Daniel: I don't know. I feel really lonely lately.
+User: That sounds difficult. Can you tell me more about why you feel lonely?
+Daniel: I don't have anyone to talk to. My brothers are always busy and my parents are always working. I don't have any friends either.
+User: That sounds very isolating. Have you talked to your psychologist about this?
+Daniel: Yeah, I have. But I don't really want to take medication for it.
+User: I understand. Can you tell me more about why you don't want to take medication?
+Daniel: I don't like the idea of taking medication for something that's not physically wrong with me.
+User: I see. Can you tell me more about how you're feeling?
+Daniel: I just feel really alone all the time. I don't know how to fix it.
+User: That sounds very tough. I'm glad you're talking to your psychologist about it. Do you have any ideas about how to make yourself feel less lonely?
+Daniel: Not really. I've tried going out and meeting new people, but it's just really hard.
+User: That sounds difficult. Have you tried joining any clubs or groups?
+Daniel: Yeah, I've tried that. But it's just really hard to meet new people.
+User: I see. Well, I'm here for you if you ever need to talk. Thank you for talking to me.

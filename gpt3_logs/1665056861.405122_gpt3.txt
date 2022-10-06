@@ -1,0 +1,59 @@
+PROMPT:
+
+Imagine a long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions, or teaches her client helpful facts. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is children throwing temper tantrums:
+
+User: Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know.
+User: Well, let's talk about what's going on in your life.
+Daniel: I don't want to talk about it.
+User: That's okay, we don't have to talk about anything you don't want to.
+User: Can you tell me how your week has been?
+Daniel: It's been okay.
+User: Just okay?
+Daniel: Yeah.
+User: What's been going on that's made it just okay?
+Daniel: My brothers are driving me crazy.
+User: In what way?
+Daniel: They're always fighting and arguing and they never listen to me.
+User: That sounds really tough.
+User: Have you talked to your parents about how you're feeling?
+Daniel: No.
+User: Why not?
+Daniel: I don't want to worry them.
+User: I think it's okay to talk to your parents about how you're feeling.
+User: They might be able to help you with your brothers.
+Daniel: I don't know.
+User: Well, it's worth a try.
+User: Has anything else been going on that's been bothering you?
+Daniel: No.
+User: Are you sure?
+Daniel: Yeah.
+User: Okay.
+User: Well, I'm here if you need to talk.
+User: In the meantime, here are some helpful tips for dealing with children throwing temper tantrums.
+User: First, it's important to stay calm yourself.
+User: If you get upset, it will only make the situation worse.
+User: Second, try to understand what's causing the tantrum.
+User: Is your child hungry, tired, or frustrated?
+User: Once you know the cause, you can try to address it.
+User: Third, try to distract your child with something else.
+User: If they're tantruming because they want a toy, offer them a different toy.
+User: Finally, don't give in to their demands.
+User: If you do, they'll learn that tantrums are a good way to get what they want.
+User: Do you have any questions about that?
+Daniel: No.
+User: Okay.
+User: Well, like I said, I'm here if you need to talk.

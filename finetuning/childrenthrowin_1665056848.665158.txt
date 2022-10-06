@@ -1,0 +1,19 @@
+Daniel: I don't know. 
+User: Well, let's talk about what's going on in your life. 
+Daniel: I don't want to talk about it. 
+User: That's okay, we don't have to talk about anything you don't want to. 
+Can you tell me how your week has been?
+Daniel: It's been fine. 
+User: Just fine? 
+Daniel: Yeah. 
+User: Okay. 
+Is there anything you'd like to talk about? 
+Daniel: No. 
+User: That's okay. 
+We can talk about something else then. 
+Do you have any brothers or sisters?
+Daniel: Yeah, I have two brothers. 
+User: What are they like? 
+Daniel: They're okay. 
+User: Just okay? 
+Daniel: Yeah.

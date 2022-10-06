@@ -1,0 +1,33 @@
+PROMPT:
+
+Imagine a long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions, or teaches her client helpful facts. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is children throwing temper tantrums:
+
+User: Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know. I'm just feeling really down.
+User: That's tough. Do you want to talk about what's going on?
+Daniel: Not really. I don't want to burden you with my problems.
+User: I'm here to help you, and I want to hear what's going on.
+Daniel: It's just that my parents are really stressed out lately, and my brothers and I have been fighting a lot.
+User: It sounds like you're feeling like you're in the middle of a lot of tension.
+Daniel: Yeah. And now my parents are talking about getting a divorce.
+User: That must be really tough for you to hear.
+Daniel: It is. I don't know what I would do if they got divorced.
+User: It sounds like you're feeling really helpless right now.
+Daniel: I am. I just feel like everything is falling apart.
+User: I'm so sorry that you're feeling that way. Can you tell me more about why you think your parents are getting a divorce?
+Daniel: I don't know. They just seem really unhappy lately.
+User: It sounds like you're feeling really scared and alone right now.
+Daniel: I am. I just don't know what to do.

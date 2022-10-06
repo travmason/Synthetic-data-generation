@@ -1,0 +1,32 @@
+PROMPT:
+
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions, or teaches her client helpful facts. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is loneliness from being single:
+
+User: Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know. I feel really lonely lately.
+User: That sounds difficult. Can you tell me more about why you feel lonely?
+Daniel: I don't have anyone to talk to. My brothers are always busy and my parents are always working. I don't have any friends either.
+User: That sounds very isolating. Have you talked to your psychologist about this?
+Daniel: Yeah, I have. But I don't really want to take medication for it.
+User: I understand. Can you tell me more about why you don't want to take medication?
+Daniel: I don't like the idea of taking medication for something that's not physically wrong with me.
+User: I see. Can you tell me more about how you're feeling?
+Daniel: I just feel really alone all the time. I don't know how to fix it.
+User: That sounds very tough. I'm glad you're talking to your psychologist about it. Do you have any ideas about how to make yourself feel less lonely?
+Daniel: Not really. I've tried going out and meeting new people, but it's just really hard.
+User: That sounds difficult. Have you tried joining any clubs or groups?
+Daniel: Yeah, I've tried that. But it's just really hard to meet new people.
+User: I see. Well, I'm here for you if you ever need to talk. Thank you for talking to me.

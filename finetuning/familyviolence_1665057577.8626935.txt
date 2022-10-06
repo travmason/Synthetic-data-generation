@@ -1,0 +1,30 @@
+Daniel: I don't know.
+User: Do you want to talk about what's going on?
+Daniel: I don't know. My family is really messed up.
+User: It sounds like you're feeling helpless and alone.
+Daniel: Yeah. My brothers are always fighting and my dad hits my mom. I can't do anything to stop it.
+User: It's hard to see the people we love hurting and not be able to do anything about it.
+Daniel: Yeah.
+User: I'm sorry that you're going through this.
+Daniel: It's just really hard.
+User: Do you want to talk about how this makes you feel?
+Daniel: I don't know. I just feel really bad all the time.
+User: That makes a lot of sense. Can you tell me more about how you're feeling?
+Daniel: I just feel really sad and scared all the time. I don't know what to do.
+User: It sounds like you're feeling overwhelmed.
+Daniel: Yeah.
+User: That's completely understandable. Do you have anyone you can talk to about this?
+Daniel: I see a psychologist, but it's not really helping.
+User: That's okay. Sometimes it takes a while to find the right fit. Are you taking medication for your anxiety?
+Daniel: Yeah, but it's not really helping either.
+User: That's okay. Sometimes it takes a while to find the right combination of medication and therapy. Have you talked to your brothers about how you're feeling?
+
+Daniel: No. They're the ones that are always fighting. I don't want to make things worse.
+User: I understand that you don't want to make things worse, but it sounds like you're carrying a lot of this by yourself.
+Daniel: I don't know what to do.
+User: That's okay. We can work on that together. Do you want to talk about what your ideal outcome is?
+Daniel: I don't know. I just want my family to be normal.
+User: That's a great goal. Do you have any ideas about how we can work towards that?
+Daniel: I don't know.
+User: That's okay. We can brainstorm some ideas together. Would that be something you'd be interested in?
+Daniel: Yeah.

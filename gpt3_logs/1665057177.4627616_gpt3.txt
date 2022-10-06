@@ -1,0 +1,33 @@
+PROMPT:
+
+Imagine a really long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions, or teaches her client helpful facts. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is road rage:
+
+User: Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know if I can talk about it.
+User: Why don't you want to talk about it?
+David: It's just really hard for me to talk about.
+User: I completely understand. It can be really tough to open up about these things. Can you tell me a little bit about what's going on?
+David: I just get so angry when I'm driving. I hate feeling like this.
+User: It sounds like you're feeling a lot of anger and frustration. Do you ever hurt yourself or anyone else when you're feeling like this?
+David: No, I would never do that. But I've smashed a few things in my house when I've gotten too angry.
+User: It's understandable that you would need to release that anger somehow. Have you tried any other coping mechanisms?
+David: I've tried deep breathing and counting to 10, but it doesn't really help.
+User: Those are both great techniques. Sometimes it takes a little bit of practice to get them to work. Have you talked to your psychologist about this?
+David: Yes, and they've suggested I try medication. But I'm really not sure about that.
+User: It's totally up to you whether or not you want to try medication. Have you done any research into it?
+David: A little bit. I'm just scared that it won't work or that it will have bad side effects.
+User: Those are valid concerns. But I think it's worth considering, especially if you're struggling to cope with your anger. Would you like me to send you some information about medication?
+David: Yes, that would be great. Thank you.
