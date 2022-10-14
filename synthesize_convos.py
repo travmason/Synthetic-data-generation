@@ -2,6 +2,7 @@ import os
 import openai
 from time import time,sleep
 from dotenv import load_dotenv
+import json
 
 try:
     load_dotenv()  # take environment variables from .env.
@@ -21,7 +22,7 @@ def save_convo(text, topic):
 openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
 
-def gpt3_completion(prompt, engine='text-davinci-002', temp=0.7, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
+def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:
@@ -36,9 +37,15 @@ def gpt3_completion(prompt, engine='text-davinci-002', temp=0.7, top_p=1.0, toke
                 presence_penalty=pres_pen,
                 stop=stop)
             text = response['choices'][0]['text'].strip()
+            print('lines = %s' % str(len(text.splitlines(True))))
+            returned_lines = str(len(text.splitlines(True)))
             filename = '%s_gpt3.txt' % time()
             with open('gpt3_logs/%s' % filename, 'w') as outfile:
                 outfile.write('PROMPT:\n\n' + prompt + '\n\n==========\n\nRESPONSE:\n\n' + text)
+            response_info = '{"topic" : "%s",\nengine" : "%s",\ntemp" : "%s",\ntop_p" : "%s",\nfreq_pen" : "%s",\npres_pen" : "%s",\nreturned lines" : "%s" }' % (topic, engine, temp, top_p, freq_pen, pres_pen, returned_lines)
+            data = response_info.split('\n')
+            with open('gpt3_logs/%s' % 'data.log', 'a', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
             return text
         except Exception as oops:
             retry += 1
@@ -52,10 +59,10 @@ if __name__ == '__main__':
     topics = open_file('topics.txt').splitlines()
     loops = 0
     for topic in topics:
-        if loops < 3:
+        if loops < 2:
             print(topic)
             prompt = open_file('syn_prompt2.txt').replace('<<TOPIC>>', topic)
-            response = gpt3_completion(prompt)
+            response = gpt3_completion(prompt, topic)
             outtext = 'Daniel: %s' % response
             print(outtext)
             tpc = topic.replace(' ', '')[0:15]

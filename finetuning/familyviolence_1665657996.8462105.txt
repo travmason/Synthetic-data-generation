@@ -1,0 +1,18 @@
+Daniel: I don't know.
+User: Okay, why don't we start by talking about what's been going on lately?
+Daniel: My brothers and I got into a fight.
+User: What happened?
+Daniel: It was stupid. We were arguing about something and it just kind of happened.
+User: What do you think led to the fight?
+Daniel: I don't know. We were just arguing and it got out of hand.
+User: Is this something that happens often?
+Daniel: No, it's not.
+User: Okay. How do you feel about what happened?
+Daniel: I don't know. I guess I'm just mad at them.
+User: Is there anything you'd like to say to them?
+Daniel: I don't know. I just wish they would understand me.
+User: What do you think they don't understand about you?
+Daniel: I don't know. I just feel like they're always against me.
+User: Do you feel like you can talk to them about this?
+Daniel: I don't know. I don't really want to talk to them about it.
+User: Okay. Is there anything else you'd like to talk about?

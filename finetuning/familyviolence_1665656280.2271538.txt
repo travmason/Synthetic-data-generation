@@ -1,0 +1,20 @@
+Daniel: I don't know.
+User: What's going on?
+Daniel: Just some family stuff.
+User: Is there anything you'd like to talk about?
+Daniel: Not really.
+User: That's okay. Sometimes it's hard to talk about things that make us feel vulnerable. 
+Can you tell me more about your family?
+Daniel: I have two brothers and we live with our parents.
+User: Do you get along with your brothers?
+Daniel: Yeah, we're okay.
+User: And your parents?
+Daniel: They're alright.
+User: Just alright?
+Daniel: Yeah, I guess.
+User: Do you ever fight with them?
+Daniel: No, not really.
+User: Have you ever been hit by a family member?
+Daniel: No.
+User: Okay. Well, it sounds like things are mostly good at home. 
+Is there anything else you wanted to talk about?
