@@ -1,9 +1,17 @@
 import os
-import json
+import numpy as np
+import pandas as pd
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+
+import matplotlib.pyplot as plt
 
 def open_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as infile:
         return infile.read()
+
+text = ''
+stopwords = set(STOPWORDS)
+stopwords.update(['User', 'Daniel', 'David', 'really', 'know'])
 
 dir = 'gpt3_logs'
 for filename in os.listdir(dir):
@@ -15,7 +23,15 @@ for filename in os.listdir(dir):
         if len(sto) > 1:
             #print('Response: %s' % sto[1])
             #print(sto[1].splitlines())
+            #text += sto[1]
             print('Length (lines): %s' % len(sto[1].splitlines()))
+
+# wordcloud = WordCloud(width=1000, height=500, stopwords=stopwords, max_words=500, background_color="white").generate(text)
+# plt.figure( figsize=(20,10), facecolor='k')
+# plt.imshow(wordcloud, interpolation='bilinear')
+# plt.axis("off")
+# plt.tight_layout(pad=0)
+# plt.show()
 
 # print('lines = %s' % str(len(text.splitlines(True))))
 # returned_lines = str(len(text.splitlines(True)))
