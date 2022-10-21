@@ -1,0 +1,27 @@
+PROMPT:
+
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is family violence:
+
+User: Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know, I'm just really struggling lately. 
+User: That sounds very tough. Why do you think you're struggling?
+Daniel: I guess it all started when I was younger. My brothers and I would always fight and my parents would get so mad. And then my dad would start hitting us.
+User: I'm sorry to hear that you experienced violence in your family. That must have been very painful for you.
+Daniel: Yeah, it was. I still have a lot of anger towards my dad. I just can't seem to let it go.
+User: It sounds like you are still carrying a lot of pain from what happened. Do you want to talk about what happened in more detail?
+Daniel: Not really. It's just really hard for me to think about.
+User: That's understandable. It sounds like it's still very painful for you to think about. Maybe we can talk about it another time?
+User: In the meantime, is there anything else you would like to talk about?

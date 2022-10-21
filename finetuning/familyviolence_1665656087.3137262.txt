@@ -1,0 +1,12 @@
+Daniel: I don't know. I guess I just need to talk to someone.
+User: I'm here to listen. Can you tell me what's on your mind?
+David: It's just, my family is really messed up. My dad hits my mom and my brothers sometimes. And I can't do anything about it.
+User: I'm sorry to hear that. That must be really tough for you to deal with.
+David: Yeah. I just don't know what to do.
+User: Have you talked to anyone else about this? Like a therapist or counselor?
+David: Yeah, I've been seeing a psychologist. But it's not really helping.
+User: That's okay. Sometimes it takes a while to find the right fit. How are you doing with your medication?
+David: It's okay, I guess. I don't really like taking it though.
+User: That's understandable. Some people don't like taking medication, but it can be really helpful. What else can I do to support you today?
+David: I don't know. Just talk to me, I guess.
+User: Okay. I'm here to listen. Please let me know if there's anything I can do to help you.

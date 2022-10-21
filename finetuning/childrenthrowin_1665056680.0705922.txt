@@ -1,8 +1,0 @@
-User: Hi DanielI'm struggling with my temper. I've been taking medication for it, but I'm still having a hard time.
-User: That sounds difficult. Can you tell me more about what's going on?
-Daniel: It's just really hard for me to control my anger. I've been trying, but it's been hard.
-User: I'm sorry to hear that. It sounds like you're doing your best.
-Daniel: Yeah, I am. I just don't know if it's enough.
-User: Have you tried any other methods of anger management?
-Daniel: I've tried some things, but nothing has really worked.
-User: Well, let's brainstorm a few more ideas then.

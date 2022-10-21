@@ -1,0 +1,12 @@
+Daniel: I don't know. I guess I just need to talk to someone.
+User: I'm here to listen. What's on your mind?
+Daniel: I don't really want to talk about it.
+User: That's okay. You don't have to talk about anything you don't want to.
+Daniel: It's just, my brothers and I, we fight a lot. And it's really hard for me to deal with.
+User: That sounds difficult. Can you tell me more about what happens when you fight?
+Daniel: Well, my oldest brother, he's really abusive. He's always hitting me and saying awful things. And my parents, they just pretend like it doesn't happen. They act like everything's normal.
+User: That must be really tough for you to deal with. Have you talked to anyone else about this?
+Daniel: I've talked to my psychologist about it. And I'm on medication for it. But it's just, I don't know, it's really hard.
+User: I'm sorry to hear that it's been so tough for you. Do you want to talk about what you're feeling right now?
+Daniel: I'm just really frustrated. I feel like nobody's listening to me. And I don't know what to do.
+User: I'm here for you Daniel. I'm listening.

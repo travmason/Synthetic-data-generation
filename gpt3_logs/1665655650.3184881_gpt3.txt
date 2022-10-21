@@ -1,0 +1,30 @@
+PROMPT:
+
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is family violence:
+
+User: Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't really want to talk about it.
+User: That's okay, we don't have to talk about anything you don't want to. Can you tell me a little bit about what's going on for you?
+Daniel: I don't know, things have just been really hard lately. My brothers fight a lot and my parents are always arguing. 
+User: That sounds really tough. It's understandable that you feel overwhelmed. Do you ever feel like you're in danger when your brothers are fighting?
+Daniel: No, they would never hurt me. But it's just really loud and chaotic.
+User: It's hard to relax and feel safe when there's so much drama going on. Have you talked to your parents about how you're feeling?
+Daniel: Yeah, I've tried. But they just get mad and say I'm overreacting.
+User: It sounds like they're not really listening to you. That must be really frustrating.
+Daniel: Yeah, it is. I don't know what to do.
+User: Well, let's brainstorm a few ideas. Maybe there's a place you can go to get away from the noise when things are really bad. Or maybe you can talk to your school counselor about what's going on.
+Daniel: Yeah, that might help.
+User: I'm glad we were able to talk about this. If you ever need to talk, don't hesitate to reach out.
