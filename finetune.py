@@ -1,10 +1,16 @@
 import requests
 import openai
+import os
 from pprint import pprint
+from dotenv import load_dotenv
 
+try:
+    load_dotenv()  # take environment variables from .env.
+except Exception as oops:
+    print("Issue with load_dotenv:" + oops)
+    exit()
 
-with open('openaiapikey.txt', 'r') as infile:
-    open_ai_api_key = infile.read()
+open_ai_api_key = os.getenv("OPENAI_API_KEY")
 openai.api_key = open_ai_api_key
 
 
@@ -46,6 +52,6 @@ def finetune_get(ftid):
 
 
 #from finetune import *
-#resp = file_upload('eve.jsonl')
-#finetune_model(resp['id'], 'EVE')
+#resp = file_upload('david.jsonl')
+#finetune_model(resp['id'], 'DAVID')
 finetune_list()
