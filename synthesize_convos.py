@@ -4,6 +4,7 @@ from time import time,sleep
 from dotenv import load_dotenv
 import pandas as pd
 import json
+import uuid
 
 try:
     load_dotenv()  # take environment variables from .env.
@@ -22,6 +23,7 @@ def save_convo(text, topic):
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
+
 
 def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
     max_retry = 5
@@ -58,20 +60,35 @@ def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0,
 
 if __name__ == '__main__':
     topics = open_file('topics.txt').splitlines()
+
+    first_utterance = open_file('utterances.txt').splitlines()
+    utterance_loop = len(first_utterance)
+
     loops = 0
+    utt_loop = 0
+    raw_utterance = "\nUser: <<UTT>>\nDaniel:"
+    data = []
+
     for topic in topics:
-        if loops < 2:
-            print(topic)
-            prompt = open_file('syn_prompt2.txt').replace('<<TOPIC>>', topic)
-            prompt += "\nUser: Hi Daniel, how can I best help you today?\nDaniel:"
-            print(prompt)
-            exit()
-            response = gpt3_completion(prompt, topic)
-            outtext = 'Daniel: %s' % response
-            print(outtext)
-            tpc = topic.replace(' ', '')[0:15]
-            save_convo(outtext, tpc)
-            loops += 1
-        else:
-            exit()
+        for utterance in first_utterance:
+            if loops < 20:
+                prompt = open_file('syn_prompt2.txt').replace('<<TOPIC>>', topic)
+                utterance = raw_utterance.replace('<<UTT>>', utterance)
+                data.append([prompt, topic, utterance])            
+                prompt += utterance
+                prompt = str(uuid.uuid4()) + '\n' + prompt
+                #print(prompt)
+                # exit()
+                # response = gpt3_completion(prompt, topic)
+                # outtext = 'Daniel: %s' % response
+                # print(outtext)
+                # tpc = topic.replace(' ', '')[0:15]
+                # save_convo(outtext, tpc)
+                loops += 1
+            else:
+                print(data)
+                print('\n---------------------------------\n')
+                df = pd.DataFrame(data)
+                df.head()
+                exit()
         
