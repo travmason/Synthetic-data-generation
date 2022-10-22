@@ -2,6 +2,7 @@ import os
 import openai
 from time import time,sleep
 from dotenv import load_dotenv
+import pandas as pd
 import json
 
 try:
@@ -62,6 +63,9 @@ if __name__ == '__main__':
         if loops < 2:
             print(topic)
             prompt = open_file('syn_prompt2.txt').replace('<<TOPIC>>', topic)
+            prompt += "\nUser: Hi Daniel, how can I best help you today?\nDaniel:"
+            print(prompt)
+            exit()
             response = gpt3_completion(prompt, topic)
             outtext = 'Daniel: %s' % response
             print(outtext)

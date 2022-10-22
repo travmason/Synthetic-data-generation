@@ -6,6 +6,3 @@ The patient is David, who has a mental health issue and is reluctant to talk abo
 David has two brothers and lives with his parents.
 He has been seeing a psychologist and is taking some medication for his issue.
 The topic of the following conversation is <<TOPIC>>:
-
-User: Hi Daniel, how can I best help you today?
-Daniel:
