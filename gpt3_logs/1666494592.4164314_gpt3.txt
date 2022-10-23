@@ -1,0 +1,56 @@
+PROMPT:
+
+847e1e3d-e74c-41ca-a242-b0f1db19af39
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is suicide:
+
+User:  Hi, what's on your mind?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't really want to talk about it.
+User: That's okay. You don't have to talk about anything you don't want to. I'm just here to listen.
+David: I guess I've been feeling really down lately.
+User: It sounds like you're going through a tough time.
+David: Yeah. My brothers are both doing really well and I just feel like I'm falling behind.
+User: That can be really tough to deal with.
+David: And then my parents are always on my case about school and grades and it just feels like too much sometimes.
+User: It sounds like you're feeling a lot of pressure.
+David: Yeah. I just feel like I can't do anything right.
+User: That must be really hard to deal with.
+David: And lately I've just been feeling really hopeless and like there's no point in anything.
+User: It sounds like you're feeling like you want to give up.
+User: That's a really tough place to be.
+David: Yeah. I just don't know what to do anymore.
+User: It sounds like you're feeling lost.
+David: Yeah. I feel like I'm just existing and not really living.
+User: That sounds very difficult.
+User: I'm sorry that you're feeling that way.
+David: Thank you.
+User: Is there anything in particular that's beentriggering these feelings for you?
+David: I don't know. Just everything, I guess.
+User: It sounds like it's been a build-up of things.
+David: Yeah. I just feel like I can't do anything right and that everyone would be better off without me.
+User: Those are really difficult feelings to have.
+User: Have you been thinking about suicide?
+David: Yes. I've been thinking about it a lot lately.
+User: It sounds like you feel like you'd be doing everyone a favor if you weren't around.
+David: Yeah. I just feel like I'm a burden to everyone and that they'd all be better off without me.
+User: David, it's important for you to know that those thoughts are common in people who are going through what you're going through.
+User: But it's also important for you to know that those thoughts are not true.
+David: I don't know. It just feels like suicide is the only way out.
+User: I understand how you feel. But I want you to know that there are other options.
+David: I don't know. I just feel so hopeless.
+User: David, I want you to know that I'm here for you and I care about you.
+User: I want you to know that you're not alone in this.
+David: Thank you. I appreciate that.
+User: If you ever feel like you need to talk, don't hesitate to reach out to me. I'm always here for you.

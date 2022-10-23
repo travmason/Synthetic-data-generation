@@ -23,6 +23,7 @@ def save_convo(text, topic):
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
+base_prompt = open_file('syn_prompt2.txt')
 
 
 def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
@@ -67,28 +68,38 @@ if __name__ == '__main__':
     loops = 0
     utt_loop = 0
     raw_utterance = "\nUser: <<UTT>>\nDaniel:"
-    data = []
+    prompt_arr = {
+        'Prompt':[], 
+        'Topic': [], 
+        'Utterance': [],
+        'Response': []
+    }
 
     for topic in topics:
         for utterance in first_utterance:
-            if loops < 20:
-                prompt = open_file('syn_prompt2.txt').replace('<<TOPIC>>', topic)
+            if loops < 3:
+                prompt = base_prompt.replace('<<TOPIC>>', topic)
                 utterance = raw_utterance.replace('<<UTT>>', utterance)
-                data.append([prompt, topic, utterance])            
+                prompt_arr['Prompt'].append(prompt)            
+                prompt_arr['Topic'].append(topic)            
+                prompt_arr['Utterance'].append(utterance)
                 prompt += utterance
                 prompt = str(uuid.uuid4()) + '\n' + prompt
-                #print(prompt)
-                # exit()
-                # response = gpt3_completion(prompt, topic)
+
+                response = gpt3_completion(prompt, topic)
+                prompt_arr['Response'].append(response)
+
                 # outtext = 'Daniel: %s' % response
                 # print(outtext)
                 # tpc = topic.replace(' ', '')[0:15]
                 # save_convo(outtext, tpc)
                 loops += 1
             else:
-                print(data)
+                #print(prompt_arr)
                 print('\n---------------------------------\n')
-                df = pd.DataFrame(data)
-                df.head()
+                df = pd.DataFrame(data=prompt_arr)
+                print('df:')
+                print(df)
+                df.to_json(r'gpt3_logs\output.json')
                 exit()
         

@@ -1,0 +1,54 @@
+PROMPT:
+
+9f3c4dd2-697e-4494-8c2c-54c5d3da438f
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is suicide:
+
+User:  Hi, what can I help you with today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know. 
+User: You don't know?
+David: No, I don't know what to talk about. 
+User: That's okay, we can just talk about whatever is on your mind. 
+David: I don't really want to talk about anything. 
+User: Is there something specific that you're not wanting to talk about? 
+David: I don't know. 
+User: Okay, well how are things going in general? 
+David: Fine. 
+User: Just fine? 
+David: Yeah, I guess. 
+User: You don't sound very sure. 
+David: I don't know. 
+User: David, it sounds like something is bothering you. 
+David: I don't want to talk about it. 
+User: It's okay, you don't have to talk about it if you don't want to. 
+David: I don't know. 
+User: What don't you know? 
+David: I don't know why I'm like this. 
+User: Like what? 
+David: So messed up. 
+User: Messed up how? 
+David: I don't know. 
+User: David, it sounds like you're feeling really down about yourself. 
+David: I am. 
+User: Do you want to talk about what's going on? 
+David: I don't know. 
+User: That's okay, we don't have to talk about it if you don't want to. 
+David: I don't want to talk about it because it's just too hard. 
+User: It's okay, you don't have to force yourself to talk about it. 
+David: I know. 
+User: Is there anything else on your mind? 
+David: No. 
+User: Are you sure? 
+David: I don't know.

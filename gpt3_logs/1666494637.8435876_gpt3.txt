@@ -1,0 +1,33 @@
+PROMPT:
+
+82872c35-2e95-4b82-89ca-901f32784043
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is reluctant to talk about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his issue.
+The topic of the following conversation is about a friend dying suddenly:
+
+User:  Hi, what can I help you with today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't really want to talk about it.
+User: That's okay, I'm here to listen whenever you're ready.
+David: My friend died suddenly and I don't know how to deal with it.
+User: I'm so sorry to hear that. How are you feeling?
+David: I don't know, I feel like I'm in shock. I can't believe he's gone.
+User: It's natural to feel like that after a sudden loss. How long ago did it happen?
+David: A few days ago.
+User: Have you been able to talk to anyone about it?
+David: I've talked to my brothers and my parents, but it's just not the same.
+User: It sounds like you're feeling really isolated.
+David: Yeah, I guess I am.
+User: I wonder if it would help to talk to someone who's unbiased and could offer some impartial advice.
+David: I don't know, I don't really want to talk to anyone else about it.
+User: That's understandable. But it might help you to process what's happened if you did talk to someone. Just think about it and let me know if you change your mind.
