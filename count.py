@@ -14,17 +14,24 @@ stopwords = set(STOPWORDS)
 stopwords.update(['User', 'Daniel', 'David', 'really', 'know'])
 
 dir = 'gpt3_logs'
-for filename in os.listdir(dir):
-    f = os.path.join(dir, filename)
-    if os.path.isfile(f):
-        data = open_file(f)
-        sto = data.split('RESPONSE:')
-        #print('Len sto: %s' % len(sto))
-        if len(sto) > 1:
-            #print('Response: %s' % sto[1])
-            #print(sto[1].splitlines())
-            #text += sto[1]
-            print('Length (lines): %s' % len(sto[1].splitlines()))
+# for filename in os.listdir(dir):
+#     f = os.path.join(dir, filename)
+#     if os.path.isfile(f):
+#         data = open_file(f)
+#         sto = data.split('RESPONSE:')
+#         #print('Len sto: %s' % len(sto))
+#         if len(sto) > 1:
+#             #print('Response: %s' % sto[1])
+#             #print(sto[1].splitlines())
+#             #text += sto[1]
+#             print('Length (lines): %s' % len(sto[1].splitlines()))
+
+
+filename = 'output.json'
+f = os.path.join(dir, filename)
+df = pd.read_json(f)
+print(df.info)
+print('Length (lines): %s' % len(df["Response"].splitlines()))
 
 # wordcloud = WordCloud(width=1000, height=500, stopwords=stopwords, max_words=500, background_color="white").generate(text)
 # plt.figure( figsize=(20,10), facecolor='k')
