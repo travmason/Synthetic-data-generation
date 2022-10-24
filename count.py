@@ -31,7 +31,11 @@ filename = 'output.json'
 f = os.path.join(dir, filename)
 df = pd.read_json(f)
 print(df.info)
-print('Length (lines): %s' % len(df["Response"].splitlines()))
+print(df.dtypes)
+print(df.describe())
+for d in df["Response"]:
+    print('Length (lines): %s' % len(d.splitlines()))
+    print("\n\n%s\n" % d)
 
 # wordcloud = WordCloud(width=1000, height=500, stopwords=stopwords, max_words=500, background_color="white").generate(text)
 # plt.figure( figsize=(20,10), facecolor='k')
