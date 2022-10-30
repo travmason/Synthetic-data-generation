@@ -32,24 +32,28 @@ def topic_model(text):
     # Load the regular expression library
 
     # Remove punctuation
-    text['paper_text_processed'] = \
-    text['paper_text'].map(lambda x: re.sub('[,\.!?]', '', x))
+    text["Response_proc"] = \
+    text["Response"].map(lambda x: re.sub('[,\.!?]', '', x))
     # Convert the titles to lowercase
-    text['paper_text_processed'] = \
-    text['paper_text_processed'].map(lambda x: x.lower())
+    text["Response_proc"] = \
+    text["Response_proc"].map(lambda x: x.lower())
     # Print out the first rows of papers
-    text['paper_text_processed'].head()
+    print('Prompt : \n%s\n' % text["Prompt"].head())
+    print('Topic : \n%s\n' % text["Topic"].head())
+    print('Utterance : \n%s\n' % text["Utterance"].head())
+    print('Response_proc : \n%s\n' % text["Response_proc"].head())
 
-    # Import the wordcloud library
-    from wordcloud import WordCloud
-    # Join the different processed titles together.
-    long_string = ','.join(list(papers['paper_text_processed'].values))
-    # Create a WordCloud object
-    wordcloud = WordCloud(background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
-    # Generate a word cloud
-    wordcloud.generate(long_string)
-    # Visualize the word cloud
-    wordcloud.to_image()
+    # # Import the wordcloud library
+    # from wordcloud import WordCloud
+    # # Join the different processed titles together.
+    # long_string = ','.join(list(text['Response_proc'].values))
+    # stop_words = ["user", "david"] + list(STOPWORDS)
+    # # Create a WordCloud object
+    # wordcloud = WordCloud(stopwords=stop_words, background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
+    # # Generate a word cloud
+    # wordcloud.generate(long_string)
+    # # Visualize the word cloud
+    # wordcloud.to_image().show()
 
     import gensim
     from gensim.utils import simple_preprocess
@@ -57,7 +61,7 @@ def topic_model(text):
     nltk.download('stopwords')
     from nltk.corpus import stopwords
     stop_words = stopwords.words('english')
-    stop_words.extend(['from', 'subject', 're', 'edu', 'use'])
+    stop_words.extend(['user', 'david', 'hi'])
     def sent_to_words(sentences):
         for sentence in sentences:
             # deacc=True removes punctuations
@@ -65,7 +69,7 @@ def topic_model(text):
     def remove_stopwords(texts):
         return [[word for word in simple_preprocess(str(doc)) 
                 if word not in stop_words] for doc in texts]
-    data = text.paper_text_processed.values.tolist()
+    data = text.Response_proc.values.tolist()
     data_words = list(sent_to_words(data))
     # remove stop words
     data_words = remove_stopwords(data_words)
@@ -119,7 +123,7 @@ print(df.describe())
 for d in df["Response"]:
     print('Length (lines): %s' % len(d.splitlines()))
     #print("\n\n%s\n" % d)
-topic_model(d)
+topic_model(df)
 
 # wordcloud = WordCloud(width=1000, height=500, stopwords=stopwords, max_words=500, background_color="white").generate(text)
 # plt.figure( figsize=(20,10), facecolor='k')
