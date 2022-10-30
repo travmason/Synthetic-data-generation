@@ -10,6 +10,7 @@ except Exception as oops:
     print("Issue with load_dotenv:" + oops)
     exit()
 
+
 open_ai_api_key = os.getenv("OPENAI_API_KEY")
 openai.api_key = open_ai_api_key
 

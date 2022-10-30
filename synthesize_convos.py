@@ -61,6 +61,12 @@ def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0,
 
 if __name__ == '__main__':
     topics = open_file('topics.txt').splitlines()
+    vars_df = pd.read_csv('vars.csv')
+    print('Vars : \n%s\n' % vars_df)
+    for i in vars_df["sisters"]:
+        if i:
+            print('i : %s\n' % i)
+    exit()
 
     first_utterance = open_file('utterances.txt').splitlines()
     utterance_loop = len(first_utterance)
