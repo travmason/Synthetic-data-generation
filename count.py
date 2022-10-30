@@ -96,34 +96,35 @@ def topic_model(text):
     pprint(lda_model.print_topics())
     doc_lda = lda_model[corpus]
 
-    import pyLDAvis.gensim
+    import pyLDAvis.gensim_models
     import pickle 
     import pyLDAvis
     # Visualize the topics
-    pyLDAvis.enable_notebook()
-    LDAvis_data_filepath = os.path.join('./results/ldavis_prepared_'+str(num_topics))
+    LDAvis_data_filepath = os.path.join('./gpt3_logs/ldavis_prepared_'+str(num_topics))
     # # this is a bit time consuming - make the if statement True
     # # if you want to execute visualization prep yourself
     if 1 == 1:
-        LDAvis_prepared = pyLDAvis.gensim.prepare(lda_model, corpus, id2word)
+        LDAvis_prepared = pyLDAvis.gensim_models.prepare(lda_model, corpus, id2word)
         with open(LDAvis_data_filepath, 'wb') as f:
             pickle.dump(LDAvis_prepared, f)
     # load the pre-prepared pyLDAvis data from disk
     with open(LDAvis_data_filepath, 'rb') as f:
         LDAvis_prepared = pickle.load(f)
-    pyLDAvis.save_html(LDAvis_prepared, './results/ldavis_prepared_'+ str(num_topics) +'.html')
+    pyLDAvis.save_html(LDAvis_prepared, './gpt3_logs/ldavis_prepared_'+ str(num_topics) +'.html')
     LDAvis_prepared
 
-filename = 'output.json'
-f = os.path.join(dir, filename)
-df = pd.read_json(f)
-print(df.info)
-print(df.dtypes)
-print(df.describe())
-for d in df["Response"]:
-    print('Length (lines): %s' % len(d.splitlines()))
-    #print("\n\n%s\n" % d)
-topic_model(df)
+
+if __name__ == '__main__':
+    filename = 'output.json'
+    f = os.path.join(dir, filename)
+    df = pd.read_json(f)
+    print(df.info)
+    print(df.dtypes)
+    print(df.describe())
+    for d in df["Response"]:
+        print('Length (lines): %s' % len(d.splitlines()))
+        #print("\n\n%s\n" % d)
+    topic_model(df)
 
 # wordcloud = WordCloud(width=1000, height=500, stopwords=stopwords, max_words=500, background_color="white").generate(text)
 # plt.figure( figsize=(20,10), facecolor='k')
