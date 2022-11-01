@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import pandas as pd
 import json
 import uuid
+import math
 
 try:
     load_dotenv()  # take environment variables from .env.
@@ -60,13 +61,20 @@ def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0,
 
 
 if __name__ == '__main__':
+    # default prompt attributes
+    brothers = "no brothers"
+    sisters = "one sister"
+    severity = "mild"
+    alone = "lives"
+    topic = "depression"
+
     topics = open_file('topics.txt').splitlines()
     vars_df = pd.read_csv('vars.csv')
     print('Vars : \n%s\n' % vars_df)
     for i in vars_df["sisters"]:
-        if i:
-            print('i : %s\n' % i)
-    exit()
+        if type(i) != str:
+            exit()
+        print('i : %s, Type : %s\n' % (i, str(type(i))))
 
     first_utterance = open_file('utterances.txt').splitlines()
     utterance_loop = len(first_utterance)
@@ -80,32 +88,32 @@ if __name__ == '__main__':
         'Utterance': [],
         'Response': []
     }
+    for severity in vars_df["severity"]:
+        for topic in vars_df["topic"]:
+            for utterance in first_utterance:
+                if loops < :
+                    prompt = base_prompt.replace('<<TOPIC>>', topic)
+                    utterance = raw_utterance.replace('<<UTT>>', utterance)
+                    prompt_arr['Prompt'].append(prompt)            
+                    prompt_arr['Topic'].append(topic)            
+                    prompt_arr['Utterance'].append(utterance)
+                    prompt += utterance
+                    prompt = str(uuid.uuid4()) + '\n' + prompt
 
-    for topic in topics:
-        for utterance in first_utterance:
-            if loops < 3:
-                prompt = base_prompt.replace('<<TOPIC>>', topic)
-                utterance = raw_utterance.replace('<<UTT>>', utterance)
-                prompt_arr['Prompt'].append(prompt)            
-                prompt_arr['Topic'].append(topic)            
-                prompt_arr['Utterance'].append(utterance)
-                prompt += utterance
-                prompt = str(uuid.uuid4()) + '\n' + prompt
+                    response = gpt3_completion(prompt, topic)
+                    prompt_arr['Response'].append(response)
 
-                response = gpt3_completion(prompt, topic)
-                prompt_arr['Response'].append(response)
-
-                # outtext = 'Daniel: %s' % response
-                # print(outtext)
-                # tpc = topic.replace(' ', '')[0:15]
-                # save_convo(outtext, tpc)
-                loops += 1
-            else:
-                #print(prompt_arr)
-                print('\n---------------------------------\n')
-                df = pd.DataFrame(data=prompt_arr)
-                print('df:')
-                print(df)
-                df.to_json(r'gpt3_logs\output.json')
-                exit()
-        
+                    # outtext = 'Daniel: %s' % response
+                    # print(outtext)
+                    # tpc = topic.replace(' ', '')[0:15]
+                    # save_convo(outtext, tpc)
+                    loops += 1
+                else:
+                    #print(prompt_arr)
+                    print('\n---------------------------------\n')
+                    df = pd.DataFrame(data=prompt_arr)
+                    print('df:')
+                    print(df)
+                    df.to_json(r'gpt3_logs\output.json')
+                    exit()
+            
