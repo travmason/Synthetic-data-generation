@@ -6,6 +6,11 @@ import pandas as pd
 import json
 import uuid
 import math
+import itertools
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 try:
     load_dotenv()  # take environment variables from .env.
@@ -59,6 +64,16 @@ def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0,
             print('Error communicating with OpenAI:', oops)
             sleep(0.25)
 
+def compare_cosine(doclist):
+    count_vect = CountVectorizer()
+    for a, b in itertools.combinations(doclist, 2):
+        corpus = [a,b]
+        X_train_counts = count_vect.fit_transform(corpus)
+        pd.DataFrame(X_train_counts.toarray(),columns=count_vect.get_feature_names(),index=['Document 1','Document 2'])
+        vectorizer = TfidfVectorizer()
+        trsfm=vectorizer.fit_transform(corpus)
+        pd.DataFrame(trsfm.toarray(),columns=vectorizer.get_feature_names(),index=['Document 1','Document 2'])
+        cosine_similarity(trsfm[0:1], trsfm)
 
 if __name__ == '__main__':
     # default prompt attributes
@@ -91,7 +106,7 @@ if __name__ == '__main__':
     for severity in vars_df["severity"]:
         for topic in vars_df["topic"]:
             for utterance in first_utterance:
-                if loops < :
+                if loops < 2:
                     prompt = base_prompt.replace('<<TOPIC>>', topic)
                     utterance = raw_utterance.replace('<<UTT>>', utterance)
                     prompt_arr['Prompt'].append(prompt)            
