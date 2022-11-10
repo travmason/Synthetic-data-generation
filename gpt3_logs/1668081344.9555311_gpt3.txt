@@ -1,0 +1,27 @@
+PROMPT:
+
+cd91de77-3547-4a4e-9773-c89367168ccd
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is about a friend dying suddenly:
+
+User:  Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+Hi, I'm not sure if you can help me. My best friend died suddenly and I can't stop thinking about it.
+User: I'm so sorry to hear about your friend. That must be really tough for you.
+
+Daniel: Yeah, it is. I keep thinking about what could have happened differently, and how I could have helped him.
+User: That sounds like a really painful experience. It's natural for you to want to help your friend, but it's also natural for you to feel helpless right now.
+
+Daniel: Yeah. I just feel so lost without him. He was my best friend.
+User: It sounds like you were really close to him.It's normal to feel lost and confused after someone close to you dies. Give yourself time to grieve and don't be too hard on yourself.

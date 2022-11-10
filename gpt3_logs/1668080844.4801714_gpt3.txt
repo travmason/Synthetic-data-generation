@@ -1,0 +1,29 @@
+PROMPT:
+
+33e016b2-3828-4420-ae01-79664b730d01
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is family violence:
+
+User:  Hi, what's on your mind?
+Daniel:
+
+==========
+
+RESPONSE:
+
+My family is really violent and I don't know what to do
+User: I'm sorry to hear that. Can you tell me more about what's going on?
+David:  Well, my dad hits my mom a lot, and sometimes he hits us too. My mom always tries to stop him, but she can't. I'm really scared of him.
+User: That must be really tough for you to deal with. Do you have any support?
+David: I have two brothers, but they're both older than me and they don't really care about what's going on. I've been seeing a psychologist and I'm on medication, but it doesn't seem to be helping.
+User: It sounds like you're feeling really alone and helpless. That's understandable. Have you talked to your psychologist about what's going on at home?
+David: Yeah, I have. But they just tell me to keep taking my medication and try to ignore it. But it's really hard to do that when my dad is hitting my mom right in front of me.
+User: Yes, I can imagine how difficult that must be. Can you talk to your mom about what's going on?
+David: I've tried, but she just tells me to stay out of it. She says it's none of my business.
+User: That must be really frustrating for you. Is there anyone else you can talk to about this? A friend, teacher, or relative perhaps?

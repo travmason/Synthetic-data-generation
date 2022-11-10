@@ -1,0 +1,33 @@
+PROMPT:
+
+bd0028bb-09b1-49a1-8474-c1a696c37314
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is family violence:
+
+User:  Hi, what's on your mind?
+Daniel:
+
+==========
+
+RESPONSE:
+
+Not really sure. Just feeling really down lately.
+User: That sounds tough. Can you tell me more about what's going on?
+David: Yeah. I guess it all started with my brothers. Both of them are really successful and I felt like I could never measure up. So I started getting angry and lashing out. I took it out on my parents a lot. Yelling, throwing things. It got really bad.
+User: That sounds really difficult. I'm glad you're reaching out for help.
+David: Yeah. I've been seeing a psychologist and taking medication, but it's just been really hard lately. My parents are really disappointed in me and I just feel like I'm never going to be good enough.
+User: I'm sorry to hear that. That must be really tough for you.
+David: Yeah. It is. I just don't know what to do.
+User: Well, let's talk about some options. What do you think about counseling?
+David: I don't know. I'm not really sure if it would help.
+User: What about medication?
+David: I'm already taking medication. It's just not really helping.
+User: Have you tried talking to your brothers?
+David: Yeah. We've talked, but they just don't really understand.
+User: Well, let's brainstorm some other options. Have you considered therapy?

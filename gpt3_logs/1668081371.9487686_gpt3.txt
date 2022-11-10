@@ -1,0 +1,20 @@
+PROMPT:
+
+d683e337-d3f6-4933-96a5-5c8053ace80f
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is suicide:
+
+User:  Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't really know. I just feel really down and helpless all the time. I just want to hurt myself or die, I can't keep living like this.

@@ -85,11 +85,6 @@ if __name__ == '__main__':
 
     topics = open_file('topics.txt').splitlines()
     vars_df = pd.read_csv('vars.csv')
-    print('Vars : \n%s\n' % vars_df)
-    for i in vars_df["sisters"]:
-        if type(i) != str:
-            exit()
-        print('i : %s, Type : %s\n' % (i, str(type(i))))
 
     first_utterance = open_file('utterances.txt').splitlines()
     utterance_loop = len(first_utterance)
@@ -104,9 +99,18 @@ if __name__ == '__main__':
         'Response': []
     }
     for severity in vars_df["severity"]:
+        if type(severity) != str:
+            exit()
+        print("Severity: %s\n" % severity)
         for topic in vars_df["topic"]:
-            for utterance in first_utterance:
-                if loops < 2:
+            if type(topic) != str:
+                exit()
+            print("Topic: %s\n" % topic)
+            if loops < 3:
+                for utterance in first_utterance:
+                    if type(utterance) != str:
+                        exit()
+                    print("Utterance: %s\n" % utterance)
                     prompt = base_prompt.replace('<<TOPIC>>', topic)
                     utterance = raw_utterance.replace('<<UTT>>', utterance)
                     prompt_arr['Prompt'].append(prompt)            
@@ -118,17 +122,19 @@ if __name__ == '__main__':
                     response = gpt3_completion(prompt, topic)
                     prompt_arr['Response'].append(response)
 
+                    break
                     # outtext = 'Daniel: %s' % response
                     # print(outtext)
                     # tpc = topic.replace(' ', '')[0:15]
                     # save_convo(outtext, tpc)
-                    loops += 1
-                else:
-                    #print(prompt_arr)
-                    print('\n---------------------------------\n')
-                    df = pd.DataFrame(data=prompt_arr)
-                    print('df:')
-                    print(df)
-                    df.to_json(r'gpt3_logs\output.json')
-                    exit()
+                loops += 1
+            else:
+                #print(prompt_arr)
+                print('\n---------------------------------\n')
+                df = pd.DataFrame(data=prompt_arr)
+                print('df:')
+                print(df)
+                df.to_json("gpt3_logs\\%s_%s_%s_output.json" % (severity, topic, loops))
+                loops = 0
+                break
             

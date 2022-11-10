@@ -1,0 +1,32 @@
+PROMPT:
+
+c166b37f-2674-41b3-9e3f-c46f7859dd5a
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is family violence:
+
+User:  Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know. I guess I just need to talk to someone.
+User: I'm here to listen. Tell me what's going on.
+Daniel: My dad hit my mom last night.
+User: I'm so sorry to hear that. What happened?
+Daniel: They were arguing and he just lost it. He hit her and then he left.
+User: Is your mom okay?
+Daniel: Yeah, she's alright. But I'm just so mad at him. I don't know what to do.
+User: It sounds like you're feeling a lot of anger and betrayal right now.
+Daniel: Yeah. I just can't believe he would do that.
+User: Do you want to talk about what happened after he hit your mom?
+Daniel: Well, I called my brothers and we went over to their house. My mom was really upset and my dad was just gone. We couldn't find him anywhere.
+User: That must have been really tough for you.
+Daniel: It was. I'm just so mad at him. I don't know what to do.

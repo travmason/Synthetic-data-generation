@@ -1,0 +1,33 @@
+PROMPT:
+
+b78ffff6-1eb3-4dab-8a68-7e8901d9b35e
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is family violence:
+
+User:  Hi Daniel, how can I help?
+Daniel:
+
+==========
+
+RESPONSE:
+
+Hi. I was wondering if you could help me with something.
+User:  Of course. What's going on?
+David:  It's just that, ever since I was a kid, my dad would always get really angry and start yelling and throwing things. My mom would always try to calm him down, but it never really worked. And then, about a year ago, my parents got divorced. And ever since then, my dad has been really angry with us. He yells at us all the time, and he's hit us a few times too.
+User:  That sounds really difficult. I'm so sorry that you have to go through that.
+David:  Yeah. It's just really hard, because I love my dad, but I don't know how to deal with this. Do you have any suggestions?
+User: 
+
+It sounds like you are feeling really stuck right now, and that's completely understandable. It's tough when we have to deal with family members who are behaving in ways that are hurtful or even violent. Here are some things that might be helpful for you to try. 
+
+First, it's important to make sure that you are safe. If your dad is hitting you or threatening you, you need to make sure that you are in a safe place away from him. You can also call the police if you feel like you or your mom are in danger.
+
+Next, try to talk to your dad about what's going on. It might be hard, but it's important to communicate with him and let him know how his behaviour is affecting you. You can also tell him that you're worried about him and that you want to help him.
+
+Finally, you can reach out to a therapist or counselor who can help you deal with this situation. They can provide you with support and guidance on how to best handle it.
