@@ -115,9 +115,18 @@ def topic_model(text):
 
 
 if __name__ == '__main__':
+    df = pd.DataFrame()
+    directory = 'gpt3_logs'
     filename = 'output.json'
-    f = os.path.join(dir, filename)
-    df = pd.read_json(f)
+    #f = os.path.join(dir, filename)
+    for filename in os.listdir(directory):
+        if filename.endswith('.json'):
+            print('Loading %s\n' % filename)
+            f = os.path.join(directory, filename)
+            if df.empty:
+                df = pd.read_json(f)
+            else:
+                df = pd.concat([df, pd.read_json(f)], axis=0)
     print(df.info)
     print(df.dtypes)
     print(df.describe())
