@@ -89,6 +89,7 @@ if __name__ == '__main__':
     first_utterance = open_file('utterances.txt').splitlines()
     utterance_loop = len(first_utterance)
 
+    directory = 'gpt3_logs'
     loops = 0
     utt_loop = 0
     raw_utterance = "\nUser: <<UTT>>\nDaniel:"
@@ -98,43 +99,53 @@ if __name__ == '__main__':
         'Utterance': [],
         'Response': []
     }
-    for severity in vars_df["severity"]:
-        if type(severity) != str:
-            exit()
-        print("Severity: %s\n" % severity)
-        for topic in vars_df["topic"]:
-            if type(topic) != str:
-                exit()
-            print("Topic: %s\n" % topic)
-            if loops < 3:
-                for utterance in first_utterance:
-                    if type(utterance) != str:
-                        exit()
-                    print("Utterance: %s\n" % utterance)
-                    prompt = base_prompt.replace('<<TOPIC>>', topic)
-                    utterance = raw_utterance.replace('<<UTT>>', utterance)
-                    prompt_arr['Prompt'].append(prompt)            
-                    prompt_arr['Topic'].append(topic)            
-                    prompt_arr['Utterance'].append(utterance)
-                    prompt += utterance
-                    prompt = str(uuid.uuid4()) + '\n' + prompt
 
-                    response = gpt3_completion(prompt, topic)
-                    prompt_arr['Response'].append(response)
+    for filename in os.listdir(directory):
+        if filename.endswith('.run'):
+            new_dir = int(filename.split('.')[0]) + 1
+            print('Loading %s\n' % str(new_dir))
+    exit()
 
-                    break
-                    # outtext = 'Daniel: %s' % response
-                    # print(outtext)
-                    # tpc = topic.replace(' ', '')[0:15]
-                    # save_convo(outtext, tpc)
-                loops += 1
-            else:
-                #print(prompt_arr)
-                print('\n---------------------------------\n')
-                df = pd.DataFrame(data=prompt_arr)
-                print('df:')
-                print(df)
-                df.to_json("gpt3_logs\\%s_%s_%s_output.json" % (severity, topic, loops))
-                loops = 0
+    # for severity in vars_df["severity"]:
+    #     if type(severity) != str:
+    #         exit()
+    #     print("Severity: %s\n" % severity)
+    for topic in vars_df["topic"]:
+        if type(topic) != str:
+            break
+        print("Topic: %s\n" % topic)
+        if loops < 1:
+            for utterance in first_utterance:
+                if type(utterance) != str:
+                    exit()
+                print("Utterance: %s\n" % utterance)
+                prompt = base_prompt.replace('<<TOPIC>>', topic)
+                utterance = raw_utterance.replace('<<UTT>>', utterance)
+                prompt_arr['Prompt'].append(prompt)            
+                prompt_arr['Topic'].append(topic)            
+                prompt_arr['Utterance'].append(utterance)
+                prompt += utterance
+                prompt = str(uuid.uuid4()) + '\n' + prompt
+
+                response = gpt3_completion(prompt, topic)
+                prompt_arr['Response'].append(response)
+
                 break
+                # outtext = 'Daniel: %s' % response
+                # print(outtext)
+                # tpc = topic.replace(' ', '')[0:15]
+                # save_convo(outtext, tpc)
+            loops += 1
+        else:
+            #print(prompt_arr)
+            print('\n---------------------------------\n')
+            df = pd.DataFrame(data=prompt_arr)
+            print('df:')
+            print(df)
+            for filename in os.listdir(directory):
+                if filename.endswith('.run'):
+                    print('Loading %s\n' % filename.split('.')[0])
+            df.to_json("gpt3_logs\\%s_%s_output.json" % (severity, topic))
+            loops = 0
+            break
             
