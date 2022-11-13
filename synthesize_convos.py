@@ -32,7 +32,7 @@ prompt_version = os.getenv("PROMPT_VERSION")
 base_prompt = open_file('syn_prompt2.txt')
 
 
-def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
+def gpt3_completion(wdir, prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:
@@ -50,7 +50,7 @@ def gpt3_completion(prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0,
             print('lines = %s' % str(len(text.splitlines(True))))
             returned_lines = str(len(text.splitlines(True)))
             filename = '%s_gpt3.txt' % time()
-            with open('gpt3_logs/%s' % filename, 'w') as outfile:
+            with open(wdir + '/%s' % filename, 'w') as outfile:
                 outfile.write('PROMPT:\n\n' + prompt + '\n\n==========\n\nRESPONSE:\n\n' + text)
             response_info = '{"topic" : "%s",\nengine" : "%s",\ntemp" : "%s",\ntop_p" : "%s",\nfreq_pen" : "%s",\npres_pen" : "%s",\nreturned lines" : "%s" }' % (topic, engine, temp, top_p, freq_pen, pres_pen, returned_lines)
             data = response_info.split('\n')
@@ -133,7 +133,7 @@ if __name__ == '__main__':
             prompt += utterance
             prompt = str(uuid.uuid4()) + '\n' + prompt
 
-            response = gpt3_completion(prompt, topic)
+            response = gpt3_completion(directory, prompt, topic)
             prompt_arr['Response'].append(response)
 
         print('\n---------------------------------\n')
