@@ -30,17 +30,17 @@ def topic_model(text):
     print('Utterance : \n%s\n' % text["Utterance"].head())
     print('Response_proc : \n%s\n' % text["Response_proc"].head())
 
-    # # Import the wordcloud library
-    # from wordcloud import WordCloud
-    # # Join the different processed titles together.
-    # long_string = ','.join(list(text['Response_proc'].values))
-    # stop_words = ["user", "david"] + list(STOPWORDS)
-    # # Create a WordCloud object
-    # wordcloud = WordCloud(stopwords=stop_words, background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
-    # # Generate a word cloud
-    # wordcloud.generate(long_string)
-    # # Visualize the word cloud
-    # wordcloud.to_image().show()
+    # Import the wordcloud library
+    from wordcloud import WordCloud
+    # Join the different processed titles together.
+    long_string = ','.join(list(text['Response_proc'].values))
+    stop_words = ["User:", "David:"] + list(STOPWORDS)
+    # Create a WordCloud object
+    wordcloud = WordCloud(stopwords=stop_words, background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
+    # Generate a word cloud
+    wordcloud.generate(long_string)
+    # Visualize the word cloud
+    wordcloud.to_image().show()
 
     import gensim
     from gensim.utils import simple_preprocess
@@ -108,8 +108,7 @@ if __name__ == '__main__':
     #create a directory for this run in gpt3_logs
     filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
     print(filelist)
-    myList = [i.split('.')[0] for i in filelist]
-    print(myList)
+    myList = [int(i.split('.')[0]) for i in filelist]
     working_dir = str(max(myList)) + '.run'
     print('Loading from %s\n' % working_dir)
 
