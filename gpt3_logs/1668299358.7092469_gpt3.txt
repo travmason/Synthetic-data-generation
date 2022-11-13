@@ -1,0 +1,27 @@
+PROMPT:
+
+92713d29-b5a0-46e2-a1d6-948ded1f24be
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is family violence:
+
+User:  Hi Daniel, how can I best help you today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know. My brothers keep fighting and my parents don't do anything about it.
+User: Have you talked to your brothers about how their fighting makes you feel?
+Daniel: No, they just laugh at me and tell me to stop being a baby.
+User: That must be really tough for you to hear. No one deserves to be treated like that.
+Daniel: Yeah. It just feels like they're always picking on me and I can't do anything right.
+User: Do you feel like you can talk to your parents about how you're feeling?
+Daniel: They just get mad at me and tell me I'm overreacting.
+User: That sounds very frustrating. Is there anyone else you feel you can talk to about this?

@@ -100,11 +100,17 @@ if __name__ == '__main__':
         'Response': []
     }
 
-    for filename in os.listdir(directory):
-        if filename.endswith('.run'):
-            new_dir = int(filename.split('.')[0]) + 1
-            print('Loading %s\n' % str(new_dir))
-    exit()
+    #create a directory for this run in gpt3_logs
+    filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
+    print(filelist)
+    myList = [i.split('.')[0] for i in filelist]
+    print(myList)
+    working_dir = str(int(max(myList))+1) + '.run'
+    os.mkdir(directory + '\\' + working_dir)
+    print('Creating %s\n' % working_dir)
+
+    #set the new working directory based on the new working directory name
+    directory = directory + '\\' + working_dir
 
     # for severity in vars_df["severity"]:
     #     if type(severity) != str:
@@ -142,10 +148,8 @@ if __name__ == '__main__':
             df = pd.DataFrame(data=prompt_arr)
             print('df:')
             print(df)
-            for filename in os.listdir(directory):
-                if filename.endswith('.run'):
-                    print('Loading %s\n' % filename.split('.')[0])
-            df.to_json("gpt3_logs\\%s_%s_output.json" % (severity, topic))
+
+            df.to_json(directory + "\\%s_%s_output.json" % (severity, topic))
             loops = 0
             break
             
