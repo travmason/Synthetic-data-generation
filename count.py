@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import re
+import sys
 
 import matplotlib.pyplot as plt
 
@@ -48,18 +49,23 @@ def topic_model(text):
     nltk.download('stopwords')
     from nltk.corpus import stopwords
     stop_words = stopwords.words('english')
-    stop_words.extend(['user', 'david', 'hi', 'really', 'like'])
+    stop_words.extend(['user', 'daniel', 'david', 'hi', 'really', 'like', 'sounds', 'feel', 'know', 'lot', 'would', 'yes', 'yeah', 'want', 'going', 'feeling'])
+
     def sent_to_words(sentences):
         for sentence in sentences:
             # deacc=True removes punctuations
             yield(gensim.utils.simple_preprocess(str(sentence), deacc=True))
+
     def remove_stopwords(texts):
         return [[word for word in simple_preprocess(str(doc)) 
                 if word not in stop_words] for doc in texts]
+
     data = text.Response_proc.values.tolist()
     data_words = list(sent_to_words(data))
     # remove stop words
+    print('Datawords before: %s\n' % data_words[:1][0][:30])
     data_words = remove_stopwords(data_words)
+    print('Datawords after: %s\n' % data_words[:1][0][:30])
     print(data_words[:1][0][:30])
 
     import gensim.corpora as corpora
@@ -74,7 +80,7 @@ def topic_model(text):
 
     from pprint import pprint
     # number of topics
-    num_topics = 5
+    num_topics = 10
     # Build LDA model
     lda_model = gensim.models.LdaMulticore(corpus=corpus,
                                         id2word=id2word,
@@ -105,18 +111,21 @@ if __name__ == '__main__':
     df = pd.DataFrame()
     directory = 'gpt3_logs'
 
-    #create a directory for this run in gpt3_logs
-    filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
-    print(filelist)
-    myList = [int(i.split('.')[0]) for i in filelist]
-    working_dir = str(max(myList)) + '.run'
+    print(sys.argv)
+
+    try:
+        working_dir = sys.argv[1]
+    except:
+        #create a directory for this run in gpt3_logs
+        filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
+        print(filelist)
+        myList = [int(i.split('.')[0]) for i in filelist]
+        working_dir = str(max(myList)) + '.run'
     print('Loading from %s\n' % working_dir)
 
     #set the new working directory based on the new working directory name
     directory = directory + '\\' + working_dir
 
-    filename = 'output.json'
-    #f = os.path.join(dir, filename)
     for filename in os.listdir(directory):
         if filename.endswith('.json'):
             print('Loading %s\n' % filename)
@@ -139,13 +148,3 @@ if __name__ == '__main__':
 # plt.axis("off")
 # plt.tight_layout(pad=0)
 # plt.show()
-
-# print('lines = %s' % str(len(text.splitlines(True))))
-# returned_lines = str(len(text.splitlines(True)))
-# filename = '%s_gpt3.txt' % time()
-# with open('gpt3_logs/%s' % filename, 'w') as outfile:
-#     outfile.write('PROMPT:\n\n' + prompt + '\n\n==========\n\nRESPONSE:\n\n' + text)
-# response_info = '{"topic" : "%s",\nengine" : "%s",\ntemp" : "%s",\ntop_p" : "%s",\nfreq_pen" : "%s",\npres_pen" : "%s",\nreturned lines" : "%s" }' % (topic, engine, temp, top_p, freq_pen, pres_pen, returned_lines)
-# data = response_info.split('\n')
-# with open('gpt3_logs/%s' % 'data.log', 'a', encoding='utf-8') as f:
-#     json.dump(data, f, ensure_ascii=False, indent=4)
