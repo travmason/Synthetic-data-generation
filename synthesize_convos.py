@@ -120,7 +120,7 @@ if __name__ == '__main__':
         if type(topic) != str:
             break
         print("Topic: %s\n" % topic)
-        #if loops < 1:
+
         for utterance in first_utterance:
             if type(utterance) != str:
                 break
@@ -136,20 +136,16 @@ if __name__ == '__main__':
             response = gpt3_completion(prompt, topic)
             prompt_arr['Response'].append(response)
 
-
-            # outtext = 'Daniel: %s' % response
-            # print(outtext)
-            # tpc = topic.replace(' ', '')[0:15]
-            # save_convo(outtext, tpc)
-        #    loops += 1
-        #else:
-            #print(prompt_arr)
         print('\n---------------------------------\n')
         df = pd.DataFrame(data=prompt_arr)
         print('df:')
         print(df)
-
+        prompt_arr = {
+            'Prompt':[], 
+            'Topic': [], 
+            'Utterance': [],
+            'Response': []
+        }
         df.to_json(directory + "\\%s__output.json" % (topic))
-        loops = 0
 
             
