@@ -12,7 +12,7 @@ def open_file(filepath):
 
 text = ''
 stopwords = set(STOPWORDS)
-stopwords.update(['User', 'Daniel', 'David', 'really', 'know'])
+stopwords.update(['user', 'daniel', 'david', 'really', 'like', 'know'])
 
 def topic_model(text):
     #measure how well a conversation sticks to topic
@@ -30,17 +30,17 @@ def topic_model(text):
     print('Utterance : \n%s\n' % text["Utterance"].head())
     print('Response_proc : \n%s\n' % text["Response_proc"].head())
 
-    # Import the wordcloud library
-    from wordcloud import WordCloud
-    # Join the different processed titles together.
-    long_string = ','.join(list(text['Response_proc'].values))
-    stop_words = ["User:", "David:"] + list(STOPWORDS)
-    # Create a WordCloud object
-    wordcloud = WordCloud(stopwords=stop_words, background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
-    # Generate a word cloud
-    wordcloud.generate(long_string)
-    # Visualize the word cloud
-    wordcloud.to_image().show()
+    # # Import the wordcloud library
+    # from wordcloud import WordCloud
+    # # Join the different processed titles together.
+    # long_string = ','.join(list(text['Response_proc'].values))
+    # stop_words = ["user:", "david:"] + list(STOPWORDS)
+    # # Create a WordCloud object
+    # wordcloud = WordCloud(stopwords=stop_words, background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
+    # # Generate a word cloud
+    # wordcloud.generate(long_string)
+    # # Visualize the word cloud
+    # wordcloud.to_image().show()
 
     import gensim
     from gensim.utils import simple_preprocess
@@ -48,7 +48,7 @@ def topic_model(text):
     nltk.download('stopwords')
     from nltk.corpus import stopwords
     stop_words = stopwords.words('english')
-    stop_words.extend(['user', 'david', 'hi'])
+    stop_words.extend(['user', 'david', 'hi', 'really', 'like'])
     def sent_to_words(sentences):
         for sentence in sentences:
             # deacc=True removes punctuations
@@ -74,7 +74,7 @@ def topic_model(text):
 
     from pprint import pprint
     # number of topics
-    num_topics = 10
+    num_topics = 5
     # Build LDA model
     lda_model = gensim.models.LdaMulticore(corpus=corpus,
                                         id2word=id2word,
