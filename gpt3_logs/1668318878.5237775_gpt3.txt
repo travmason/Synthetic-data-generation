@@ -1,0 +1,29 @@
+PROMPT:
+
+8a7abd41-5d57-473b-a95e-718d353140e5
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is suicide:
+
+User:  Hi Daniel, how can I help?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I don't know. I just feel so alone and helpless.
+User:  I'm sorry to hear that. It sounds like you're feeling really down.
+Daniel: Yeah. I just hate myself. I wish I could just die.
+User:  Daniel, it's okay. I'm here for you. I want you to know that you're not alone.
+Daniel: But I am. No one understands me.
+User:  I understand. I'm here to listen to you and I want to help you in any way I can.
+Daniel: I don't know. I just feel like there's no point in living.
+User:  David, suicide is Permanent solution to a Temporary problem. Things can and will get better. I promise you that.
+Daniel: I don't know. I just can't see any other way out.
+User:  There is always another way out. I'm here for you. We can figure this out together.

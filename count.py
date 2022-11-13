@@ -14,19 +14,6 @@ text = ''
 stopwords = set(STOPWORDS)
 stopwords.update(['User', 'Daniel', 'David', 'really', 'know'])
 
-dir = 'gpt3_logs'
-# for filename in os.listdir(dir):
-#     f = os.path.join(dir, filename)
-#     if os.path.isfile(f):
-#         data = open_file(f)
-#         sto = data.split('RESPONSE:')
-#         #print('Len sto: %s' % len(sto))
-#         if len(sto) > 1:
-#             #print('Response: %s' % sto[1])
-#             #print(sto[1].splitlines())
-#             #text += sto[1]
-#             print('Length (lines): %s' % len(sto[1].splitlines()))
-
 def topic_model(text):
     #measure how well a conversation sticks to topic
     # Load the regular expression library
@@ -117,6 +104,18 @@ def topic_model(text):
 if __name__ == '__main__':
     df = pd.DataFrame()
     directory = 'gpt3_logs'
+
+    #create a directory for this run in gpt3_logs
+    filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
+    print(filelist)
+    myList = [i.split('.')[0] for i in filelist]
+    print(myList)
+    working_dir = str(max(myList)) + '.run'
+    print('Loading from %s\n' % working_dir)
+
+    #set the new working directory based on the new working directory name
+    directory = directory + '\\' + working_dir
+
     filename = 'output.json'
     #f = os.path.join(dir, filename)
     for filename in os.listdir(directory):

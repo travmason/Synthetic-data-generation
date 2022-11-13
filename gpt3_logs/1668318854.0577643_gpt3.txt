@@ -1,0 +1,35 @@
+PROMPT:
+
+a50a4fe8-a90d-4ab8-be42-714abe5a791a
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is suicide:
+
+User:  Hi, what's on your mind?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I'm thinking about suicide.
+User: I'm sorry to hear that. Can you tell me more about what's going on?
+David: I just feel like life is really hard and I can't see things getting better. I'm just so tired all the time.
+User: It sounds like you are feeling really hopeless right now. What has been going on that's been making you feel this way?
+David: Everything. My brothers, school, my parents. I just can't do anything right.
+User: It sounds like you are feeling like you are in a really tough situation. Have you been talking to anyone about how you're feeling?
+David: I've been seeing a psychologist and I'm on some medication, but it just doesn't seem like it's helping.
+User: It sounds like you've been trying to get help, but you're still feeling really down. Have you thought about suicide before?
+David: Yeah, I have. I just feel like it would be so easy to just give up and end it all.
+User: It sounds like you are feeling really trapped right now. Can you think of anything that would make you feel better?
+David: I don't know. I just wish things could be different.
+User: It sounds like you wish things were different, but you don't see how that could happen. Can you think of anything that you are grateful for?
+David: I'm grateful for my family and for my friends. But I just wish I didn't have to deal with all of this mental health stuff.
+User: It sounds like you are dealing with a lot right now. Can you tell me more about your support system?
+David: I have a few friends that I can talk to, but I don't really have anyone who understands what I'm going through.
+User: It sounds like it would be helpful to talk to someone who understands what you're going through. Would you be interested in joining a support group?

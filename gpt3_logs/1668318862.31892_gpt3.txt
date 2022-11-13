@@ -1,0 +1,36 @@
+PROMPT:
+
+fc03c5f4-2167-4e15-8716-ea31b9906a1e
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is suicide:
+
+User:  Hi, what can I help you with today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+I'm struggling a lot lately. I don't know what to do.
+User: Can you tell me more about what's going on?
+Daniel: Everything is just so hard. I don't see any point in living anymore.
+User: I'm sorry to hear that. It sounds like you're really struggling.
+Daniel: Yeah. I just don't know what to do.
+User: Have you talked to anyone else about how you're feeling?
+Daniel: I've seen a psychologist and I'm on medication, but it's just not helping.
+User: It sounds like you've been through a lot.
+Daniel: Yeah. I just feel so alone.
+User: I'm here for you. We can talk about whatever you want.
+Daniel: Thanks. It's just really hard.
+User: I understand. It sounds like you're feeling really hopeless right now.
+ Daniel: Yeah. I don't see any point in living anymore.
+User: That must be really scary for you.
+Daniel: Yeah. It is.
+User: I'm glad you're talking to me about how you're feeling.
+Daniel: Thanks. It's just really hard.
