@@ -120,36 +120,36 @@ if __name__ == '__main__':
         if type(topic) != str:
             break
         print("Topic: %s\n" % topic)
-        if loops < 1:
-            for utterance in first_utterance:
-                if type(utterance) != str:
-                    exit()
-                print("Utterance: %s\n" % utterance)
-                prompt = base_prompt.replace('<<TOPIC>>', topic)
-                utterance = raw_utterance.replace('<<UTT>>', utterance)
-                prompt_arr['Prompt'].append(prompt)            
-                prompt_arr['Topic'].append(topic)            
-                prompt_arr['Utterance'].append(utterance)
-                prompt += utterance
-                prompt = str(uuid.uuid4()) + '\n' + prompt
-
-                response = gpt3_completion(prompt, topic)
-                prompt_arr['Response'].append(response)
-
+        #if loops < 1:
+        for utterance in first_utterance:
+            if type(utterance) != str:
                 break
-                # outtext = 'Daniel: %s' % response
-                # print(outtext)
-                # tpc = topic.replace(' ', '')[0:15]
-                # save_convo(outtext, tpc)
-            loops += 1
-        else:
-            #print(prompt_arr)
-            print('\n---------------------------------\n')
-            df = pd.DataFrame(data=prompt_arr)
-            print('df:')
-            print(df)
+            print("Utterance: %s\n" % utterance)
+            prompt = base_prompt.replace('<<TOPIC>>', topic)
+            utterance = raw_utterance.replace('<<UTT>>', utterance)
+            prompt_arr['Prompt'].append(prompt)            
+            prompt_arr['Topic'].append(topic)            
+            prompt_arr['Utterance'].append(utterance)
+            prompt += utterance
+            prompt = str(uuid.uuid4()) + '\n' + prompt
 
-            df.to_json(directory + "\\%s_%s_output.json" % (severity, topic))
-            loops = 0
-            break
+            response = gpt3_completion(prompt, topic)
+            prompt_arr['Response'].append(response)
+
+
+            # outtext = 'Daniel: %s' % response
+            # print(outtext)
+            # tpc = topic.replace(' ', '')[0:15]
+            # save_convo(outtext, tpc)
+        #    loops += 1
+        #else:
+            #print(prompt_arr)
+        print('\n---------------------------------\n')
+        df = pd.DataFrame(data=prompt_arr)
+        print('df:')
+        print(df)
+
+        df.to_json(directory + "\\%s__output.json" % (topic))
+        loops = 0
+
             

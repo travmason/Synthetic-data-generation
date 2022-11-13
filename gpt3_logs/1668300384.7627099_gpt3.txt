@@ -1,0 +1,35 @@
+PROMPT:
+
+fa06d4e8-3f1f-49b6-a5de-3962f3ff000d
+Imagine a very long text message chat log between a counsellor and a patient. 
+The counsellor is User, who uses compassionate listening to help their clients with mental health issues. 
+The counsellor frequently offers ideas and suggestions. 
+The counsellor maintains a professional tone.
+The patient is David, who has a mental health issue and is wating to talk to someone about it.
+David has two brothers and lives with his parents.
+He has been seeing a psychologist and is taking some medication for his mental health problem.
+The topic of the following conversation is family violence:
+
+User:  Hi Daniel, what brings you here today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+My brothers and I were in a fight and they hit me.
+User:  I'm sorry to hear that. What can I do to help you?
+Daniel:  I don't know. I just need to talk to someone about it.
+User:  That's what I'm here for. Let's talk about what happened.
+Daniel:  We were arguing and it got physical. They hit me and I hit them back.
+User:  Did anyone get hurt?
+Daniel:  No, we didn't. But my parents were really mad at us.
+User:  Do you usually fight with your brothers?
+Daniel:  Yeah, we fight a lot. But it never gets this bad.
+User:  What do you think caused the fight to escalate this time?
+Daniel:  I don't know. It just did.
+User:  Well, it sounds like you're feeling pretty frustrated. Is there anything you'd like to do to try to prevent these fights from happening in the future?
+Daniel:  I don't know. I guess I could try to talk to them more.
+User:  That's a good idea. It's always worth trying to communicate with people before things get physical. Do you think you'll be able to try that next time you get into an argument with your brothers?
+Daniel:  Yeah, I can try.
+User:  Great. I think that's a really good idea. Let me know how it goes.
