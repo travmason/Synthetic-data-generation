@@ -5,6 +5,8 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import re
 import sys
 
+from run_similarity_queries import measure_similarity
+
 import matplotlib.pyplot as plt
 
 def open_file(filepath):
@@ -118,10 +120,10 @@ if __name__ == '__main__':
     except:
         #create a directory for this run in gpt3_logs
         filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
-        print(filelist)
+        #print(filelist)
         myList = [int(i.split('.')[0]) for i in filelist]
         working_dir = str(max(myList)) + '.run'
-    print('Loading from %s\n' % working_dir)
+    print('Loading data from %s\n' % working_dir)
 
     #set the new working directory based on the new working directory name
     directory = directory + '\\' + working_dir
@@ -134,13 +136,14 @@ if __name__ == '__main__':
                 df = pd.read_json(f)
             else:
                 df = pd.concat([df, pd.read_json(f)], axis=0)
-    print(df.info)
-    print(df.dtypes)
+    #print(df.info)
+    #print(df.dtypes)
     print(df.describe())
-    for d in df["Response"]:
-        print('Length (lines): %s' % len(d.splitlines()))
+    #for d in df["Response"]:
+        #print('Length (lines): %s' % len(d.splitlines()))
         #print("\n\n%s\n" % d)
-    topic_model(df)
+    #topic_model(df)
+    measure_similarity(df["Response"])
 
 # wordcloud = WordCloud(width=1000, height=500, stopwords=stopwords, max_words=500, background_color="white").generate(text)
 # plt.figure( figsize=(20,10), facecolor='k')
