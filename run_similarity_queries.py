@@ -34,7 +34,9 @@ documents = [
 
 def measure_similarity(documents):
     # remove common words and tokenize
-    stoplist = set('for a of the and to in'.split())
+    stoplist = set(['user', 'daniel', 'david', 'hi', 'really', 'like', 'sounds', 'feel', 'know', 'lot', 'would', 'yes', 'yeah', 'want', 'going', 'feeling'])
+    #stoplist.append = set('for a of the and to in'.split())
+    print(stoplist)
     texts = [
         [word for word in document.lower().split() if word not in stoplist]
         for document in documents
@@ -94,7 +96,7 @@ def measure_similarity(documents):
     doc = "mental health"
     vec_bow = dictionary.doc2bow(doc.lower().split())
     vec_lsi = lsi[vec_bow]  # convert the query to LSI space
-    print(vec_lsi)
+    #print(vec_lsi)
 
     ###############################################################################
     # In addition, we will be considering `cosine similarity <http://en.wikipedia.org/wiki/Cosine_similarity>`_
@@ -153,7 +155,15 @@ def measure_similarity(documents):
     # order, and obtain the final answer to the query `"Human computer interaction"`:
 
     sims = sorted(enumerate(sims), key=lambda item: -item[1])
+    print('Documents.head: %s' % documents[0])
+    f = open('gpt3_logs/document_output.7.txt', 'w')
+    f.write('This is documents: %s' % documents[103])
+    f.close
     for doc_position, doc_score in sims:
+        print('doc_position: %s\n' % doc_position)
+        print('doc_score: %s\n' % doc_score)
+        print('len(documents): %s\n' % len(documents))
+        print('documents[doc_position]: %s\n' % documents[doc_position])
         print(doc_score, documents[doc_position])
 
     ###############################################################################
