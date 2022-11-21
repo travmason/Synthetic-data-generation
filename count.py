@@ -139,11 +139,11 @@ if __name__ == '__main__':
     #print(df.info)
     #print(df.dtypes)
     print(df.describe())
-    #for d in df["Response"]:
-        #print('Length (lines): %s' % len(d.splitlines()))
+    for d in df.itertuples(index=True ,name='Pandas'):
+        print('Topic: %s\nLength (lines): %s' % (getattr(d, "Topic"), len(getattr(d, "Response").splitlines())))
         #print("\n\n%s\n" % d)
     #topic_model(df)
-    measure_similarity(df["Response"])
+    #measure_similarity(df["Response"])
 
 # wordcloud = WordCloud(width=1000, height=500, stopwords=stopwords, max_words=500, background_color="white").generate(text)
 # plt.figure( figsize=(20,10), facecolor='k')

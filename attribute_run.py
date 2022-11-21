@@ -1,5 +1,6 @@
 import os
 import openai
+import numpy as np
 from time import time,sleep
 from dotenv import load_dotenv
 import pandas as pd
@@ -98,9 +99,10 @@ if __name__ == '__main__':
     print(filelist)
     myList = [i.split('.')[0] for i in filelist]
     print(myList)
-    working_dir = str(int(max(myList))+1) + '.run'
-    os.mkdir(directory + '\\' + working_dir)
+    working_dir = str(int(max(myList, key=lambda x:float(x)))+1) + '.run'
     print('Creating %s\n' % working_dir)
+    os.mkdir(directory + '\\' + working_dir)
+
 
     #set the new working directory based on the new working directory name
     directory = directory + '\\' + working_dir
@@ -109,7 +111,20 @@ if __name__ == '__main__':
     #     if type(severity) != str:
     #         exit()
     #     print("Severity: %s\n" % severity)
-    
+
+    count=0
+
+    for temp in np.arange(0, 1, 0.2):
+        print('Temp: %s\n' % temp)
+        for top_p in np.arange(0, 1, 0.2):
+            print('Top_p: %s\n' % top_p)
+            for tokens in range(500, 3501, 3000):
+                print('Tokens: %s\n' % tokens)
+                count += 1
+
+    print('Count %s' % count)
+    exit()
+
     for topic in vars_df["topic"]:
         if type(topic) != str:
             break
