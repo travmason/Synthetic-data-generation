@@ -130,18 +130,27 @@ if __name__ == '__main__':
 
     for filename in os.listdir(directory):
         if filename.endswith('.json'):
-            print('Loading %s\n' % filename)
+            #print('Loading %s\n' % filename)
             f = os.path.join(directory, filename)
             if df.empty:
                 df = pd.read_json(f)
             else:
                 df = pd.concat([df, pd.read_json(f)], axis=0)
     #print(df.info)
-    #print(df.dtypes)
-    print(df.describe())
-    for d in df.itertuples(index=True ,name='Pandas'):
-        print('Topic: %s\nLength (lines): %s' % (getattr(d, "Topic"), len(getattr(d, "Response").splitlines())))
-        #print("\n\n%s\n" % d)
+    print(df.dtypes)
+    #print(df.describe())
+    df["Response"] = df["Response"].str.split("\n")
+    df["response_length"] = df["Response"].str.len()
+    df.reset_index(inplace=True)
+    #df.to_json("gpt3_logs/df_splits_output.json")
+    # for d in df.itertuples(index=True ,name='Pandas'):
+    #     print('Utterance: %s\nResponse_length: %s\nLength (lines): %s' % (getattr(d, "Utterance"), (getattr(d, "response_length")), len(getattr(d, "Response"))))
+
+    print(df.groupby(['Topic']).mean(numeric_only=True))
+    print(df.groupby(['Utterance']).mean(numeric_only=True))
+    print(df.groupby(['Topic']).var(numeric_only=True))
+    print(df.groupby(['Utterance']).var(numeric_only=True))
+
     #topic_model(df)
     #measure_similarity(df["Response"])
 
