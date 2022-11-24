@@ -123,18 +123,25 @@ if __name__ == '__main__':
                 count += 1
 
     print('Count %s' % count)
-    exit()
+
 
     for topic in vars_df["topic"]:
         if type(topic) != str:
             break
         print("Topic: %s\n" % topic)
         prompt = base_prompt.replace('<<TOPIC>>', topic)
-        utterance = "Human: Hi, what can I help you with today?\nDaniel:"
+        utterance = "Human: Hi Daniel, what brings you here today?\nDaniel:"
         prompt_arr['Prompt'].append(prompt)            
         prompt_arr['Topic'].append(topic)            
-        prompt_arr['Utterance'].append(utterance)
         prompt += utterance
+        utterance = utterance.replace("Human: ","")
+        utterance = utterance.replace("\nDaniel:","")
+        utterance = utterance.strip(" ")        
+        prompt_arr['Utterance'].append(utterance)
+        prompt_arr['temp'].append(temp)
+        prompt_arr['top_p'].append(top_p)
+        prompt_arr['tokens'].append(tokens)
+
         #give it some salt
         prompt = str(uuid.uuid4()) + '\n' + prompt
 
@@ -148,7 +155,9 @@ if __name__ == '__main__':
         prompt_arr = {
             'Prompt':[], 
             'Topic': [], 
-            'Response': []
+            'Response': [],
+            'Utterance': [],
+            ''
         }
         df.to_json(directory + "\\%s__attributes.json" % (topic))
 

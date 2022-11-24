@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import re
 import sys
@@ -139,17 +140,42 @@ if __name__ == '__main__':
     #print(df.info)
     print(df.dtypes)
     #print(df.describe())
+    df["Utterance"] = df["Utterance"].str.replace("\nUser: ","")
+    df["Utterance"] = df["Utterance"].str.replace("\nDaniel:","")
+    df["Utterance"] = df["Utterance"].str.replace("\n","")
+    df["Utterance"] = df["Utterance"].str.strip(" ")
+
     df["Response"] = df["Response"].str.split("\n")
     df["response_length"] = df["Response"].str.len()
+
+    df_topic_lengths = df.groupby("Topic").agg([np.mean, np.std])
+    print('df_topic_lengths\n')
+    print(df_topic_lengths)
+    df_topic_lengths.to_csv('gpt3_logs/topic_lengths.csv')
+    df_topic_lengths.plot(kind='bar')
+
+    df_utt_lengths = df.groupby("Utterance").agg([np.mean, np.std])
+    print('df_utt_lengths\n')
+    print(df_utt_lengths)
+    df_utt_lengths.to_csv('gpt3_logs/utt_lengths.csv')
+    df_utt_lengths.plot(kind='bar')
+    plt.tight_layout()
+    plt.tick_params(top=True, labeltop=False, bottom=False, labelbottom=True, labelrotation=45, size=4)
+    plt.show()
     df.reset_index(inplace=True)
-    #df.to_json("gpt3_logs/df_splits_output.json")
+
+    df.to_json("gpt3_logs/df_splits_output.json")
     # for d in df.itertuples(index=True ,name='Pandas'):
     #     print('Utterance: %s\nResponse_length: %s\nLength (lines): %s' % (getattr(d, "Utterance"), (getattr(d, "response_length")), len(getattr(d, "Response"))))
-
-    print(df.groupby(['Topic']).mean(numeric_only=True))
-    print(df.groupby(['Utterance']).mean(numeric_only=True))
-    print(df.groupby(['Topic']).var(numeric_only=True))
-    print(df.groupby(['Utterance']).var(numeric_only=True))
+    # print(df.groupby(['Topic']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False))
+    # df.groupby(['Topic']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False).plot(kind='bar')
+    # print(df.groupby(['Utterance']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False))
+    # print(df.groupby(['Topic']).var(numeric_only=True).sort_values(by=["response_length"], ascending=False))
+    # print(df.groupby(['Utterance']).var(numeric_only=True).sort_values(by=["response_length"], ascending=False))
+    df.groupby(['Topic']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv('gpt3_logs/topic_mean.csv')
+    df.groupby(['Utterance']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv('gpt3_logs/Utterance_mean.csv')
+    df.groupby(['Topic']).std(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv('gpt3_logs/Topic_std.csv')
+    df.groupby(['Utterance']).std(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv('gpt3_logs/Utterance_std.csv')
 
     #topic_model(df)
     #measure_similarity(df["Response"])
