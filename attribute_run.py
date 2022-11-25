@@ -114,6 +114,8 @@ if __name__ == '__main__':
 
     count=0
 
+    store_df = pd.DataFrame()
+
     for temp in np.arange(0, 1, 0.2):
         print('Temp: %s\n' % temp)
         for top_p in np.arange(0, 1, 0.2):
@@ -124,41 +126,54 @@ if __name__ == '__main__':
 
     print('Count %s' % count)
 
+    short_topic_list = ['taking care of an old pet with medical issues', 'suicide']
 
-    for topic in vars_df["topic"]:
-        if type(topic) != str:
+    #for topic in vars_df["topic"]:
+    for temp in np.arange(0, 1, 0.2):
+        print('Temp: %s\n' % temp)
+        for top_p in np.arange(0, 1, 0.2):
+            print('Top_p: %s\n' % top_p)
+            for tokens in range(500, 3501, 3000):
+                print('Tokens: %s\n' % tokens)
+                for topic in short_topic_list:
+                    if type(topic) != str:
+                        break
+                    print("Topic: %s\n" % topic)
+                    prompt = base_prompt.replace('<<TOPIC>>', topic)
+                    utterance = "Human: Hi Daniel, what brings you here today?\nDaniel:"
+                    prompt_arr['Prompt'].append(prompt)            
+                    prompt_arr['Topic'].append(topic)            
+                    prompt += utterance
+                    utterance = utterance.replace("Human: ","")
+                    utterance = utterance.replace("\nDaniel:","")
+                    utterance = utterance.strip(" ")        
+                    # prompt_arr['Utterance'].append(utterance)
+                    # prompt_arr['temp'].append(temp)
+                    # prompt_arr['top_p'].append(top_p)
+                    # prompt_arr['tokens'].append(tokens)
+
+                    #give it some salt
+                    prompt = str(uuid.uuid4()) + '\n' + prompt
+
+                    response = gpt3_completion(directory, prompt, topic)
+                    prompt_arr['Response'].append(response)
+
+                    new_row = [[prompt, topic, utterance, temp, top_p, tokens, response]]
+
+                    store_df = store_df.append(pd.DataFrame(new_row, columns=['prompt', 'topic', 'utterance', 'temp', 'top_p', 'tokens', 'response']), ignore_index = True)
+
+                    print('\n---------------------------------\n')
+                    df = pd.DataFrame(data=prompt_arr)
+                    print('df:')
+                    print(df)
+                    prompt_arr = {
+                        'Prompt':[], 
+                        'Topic': [], 
+                        'Response': []
+                    }
+                    break
+                    #df.to_json(directory + "\\%s__attributes.json" % (topic))
+                break
             break
-        print("Topic: %s\n" % topic)
-        prompt = base_prompt.replace('<<TOPIC>>', topic)
-        utterance = "Human: Hi Daniel, what brings you here today?\nDaniel:"
-        prompt_arr['Prompt'].append(prompt)            
-        prompt_arr['Topic'].append(topic)            
-        prompt += utterance
-        utterance = utterance.replace("Human: ","")
-        utterance = utterance.replace("\nDaniel:","")
-        utterance = utterance.strip(" ")        
-        prompt_arr['Utterance'].append(utterance)
-        prompt_arr['temp'].append(temp)
-        prompt_arr['top_p'].append(top_p)
-        prompt_arr['tokens'].append(tokens)
-
-        #give it some salt
-        prompt = str(uuid.uuid4()) + '\n' + prompt
-
-        response = gpt3_completion(directory, prompt, topic)
-        prompt_arr['Response'].append(response)
-
-        print('\n---------------------------------\n')
-        df = pd.DataFrame(data=prompt_arr)
-        print('df:')
-        print(df)
-        prompt_arr = {
-            'Prompt':[], 
-            'Topic': [], 
-            'Response': [],
-            'Utterance': [],
-            ''
-        }
-        df.to_json(directory + "\\%s__attributes.json" % (topic))
-
-            
+        break
+    store_df.to_json(directory + "\\%s__attributes.json" % 'all')

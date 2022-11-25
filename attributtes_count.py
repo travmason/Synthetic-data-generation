@@ -29,9 +29,9 @@ def topic_model(text):
     text["Response_proc"] = \
     text["Response_proc"].map(lambda x: x.lower())
     # Print out the first rows of papers
-    print('Prompt : \n%s\n' % text["Prompt"].head())
-    print('Topic : \n%s\n' % text["Topic"].head())
-    print('Utterance : \n%s\n' % text["Utterance"].head())
+    print('Prompt : \n%s\n' % text["prompt"].head())
+    print('Topic : \n%s\n' % text["topic"].head())
+    print('Utterance : \n%s\n' % text["utterance"].head())
     print('Response_proc : \n%s\n' % text["Response_proc"].head())
 
     # # Import the wordcloud library
@@ -140,31 +140,38 @@ if __name__ == '__main__':
     #print(df.info)
     print(df.dtypes)
     #print(df.describe())
-    df["Utterance"] = df["Utterance"].str.replace("\nUser: ","")
-    df["Utterance"] = df["Utterance"].str.replace("\nDaniel:","")
-    df["Utterance"] = df["Utterance"].str.replace("\n","")
-    df["Utterance"] = df["Utterance"].str.strip(" ")
+    df["utterance"] = df["utterance"].str.replace("\nUser: ","")
+    df["utterance"] = df["utterance"].str.replace("\nDaniel:","")
+    df["utterance"] = df["utterance"].str.replace("\n","")
+    df["utterance"] = df["utterance"].str.strip(" ")
 
-    df["Response"] = df["Response"].str.split("\n")
-    df["response_length"] = df["Response"].str.len()
+    df["response"] = df["response"].str.split("\n")
+    df["response_length"] = df["response"].str.len()
 
-    df_topic_lengths = df.groupby("Topic").agg([np.mean, np.std])
+    df_topic_lengths = df.groupby("topic").agg([np.mean, np.std])
     print('df_topic_lengths\n')
     print(df_topic_lengths)
     df_topic_lengths.to_csv('gpt3_logs/topic_lengths.csv')
     df_topic_lengths.plot(kind='bar')
 
-    df_utt_lengths = df.groupby("Utterance").agg([np.mean, np.std])
+    df_utt_lengths = df.groupby("utterance").agg([np.mean, np.std])
     print('df_utt_lengths\n')
     print(df_utt_lengths)
     df_utt_lengths.to_csv('gpt3_logs/utt_lengths.csv')
     df_utt_lengths.plot(kind='bar')
+
+    df_top_p_lengths = df.groupby("top_p").agg([np.mean, np.std])
+    print('df_top_p_lengths\n')
+    print(df_top_p_lengths)
+    df_top_p_lengths.to_csv('gpt3_logs/top_p_lengths.csv')
+    df_top_p_lengths.plot(kind='bar')
+
     plt.tight_layout()
     plt.tick_params(top=True, labeltop=False, bottom=False, labelbottom=True, labelrotation=45, size=4)
     plt.show()
     df.reset_index(inplace=True)
 
-    df.to_json(working_dir + "/df_splits_output.json")
+    df.to_json(directory + "/df_splits_output.json")
     # for d in df.itertuples(index=True ,name='Pandas'):
     #     print('Utterance: %s\nResponse_length: %s\nLength (lines): %s' % (getattr(d, "Utterance"), (getattr(d, "response_length")), len(getattr(d, "Response"))))
     # print(df.groupby(['Topic']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False))
@@ -177,8 +184,7 @@ if __name__ == '__main__':
     # df.groupby(['Utterance']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv('gpt3_logs/Utterance_mean.csv')
     # df.groupby(['Topic']).std(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv('gpt3_logs/Topic_std.csv')
     # df.groupby(['Utterance']).std(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv('gpt3_logs/Utterance_std.csv')
-    
-    df.groupby(['top_p']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv(working_dir + '/top_p_mean.csv')
+    df.groupby(['top_p']).mean(numeric_only=True).sort_values(by=["response_length"], ascending=False).to_csv(directory + '/top_p_mean.csv')
     #topic_model(df)
     #measure_similarity(df["Response"])
 

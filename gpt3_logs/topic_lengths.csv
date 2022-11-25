@@ -1,45 +1,4 @@
-,response_length,response_length
-,mean,std
-Topic,,
-about a friend dying suddenly,11.0,5.9478470409140956
-anger control issues,9.6,3.7844205739399217
-applying to university,14.6,8.202606818608926
-asking for financial advice but Human says they should talk to an accountant,3.6,2.356060357495806
-asking for legal advice but Human says they need to call a lawyer,2.0,0.0
-asking for medical advice but the counsellor recommends they call a doctor,7.0,1.80534186769688
-being a lonely retiree,7.8,2.051034269102715
-being a workaholic,10.6,1.7690143483606577
-bored and looking for something to do,4.2,3.5142566781611166
-breaking out of hyper-focus,18.8,18.446318512556015
-caring for a senior with dementia,9.6,2.256904300424942
-childhood trauma,8.4,4.6157624676639
-coping with depression,10.8,2.9339088651575858
-difficult family members,8.8,1.4735767952260144
-drifting through life without a purpose,12.6,4.917876294334458
-family violence,10.2,4.589148840617365
-feeling like life is just a series of monotonous tasks,12.6,6.5429970816752485
-grieving a death,10.2,2.5764501233470907
-having an angry spouse,12.2,4.779586221049312
-how to establish and maintain boundaries,16.6,7.5806115611994676
-how to have difficult conversations with spouse,11.2,8.063774577184974
-how to raise emotionally healthy children,11.4,4.649749247779592
-identifying and investigating complex emotions,7.4,2.342588162320815
-learning to eat better,10.4,7.3944181214507125
-learning to take care of oneself better,11.0,6.155604996116714
-loneliness from being a foreigner in a new country,8.2,3.6113030105437383
-loneliness from being single,6.6,1.2030888081984519
-navigating office politics,11.4,5.267826876426369
-pain from being LGBT and having to hide it,14.2,3.260148988707636
-postpartum depression,13.6,4.4696507444964615
-questioning gender and sexuality,7.6,3.732678114442802
-recovering from serious injuries,11.2,4.0035698356056475
-road rage,9.2,4.805815018096897
-sifting through old hurts,12.0,3.7587817663403227
-stress from a medical quarantine,12.8,3.5091201248508033
-struggling with anxiety,11.6,5.6934363429570665
-suicide,14.0,5.342210748957262
-taking care of a special needs child,8.4,3.278334142132975
-taking care of an old pet with medical issues,17.2,3.7272386148873933
-"the user is sad and becomes suicidal but the counsellor gently encourages them to call a friend, a family member, or emergency services",11.4,4.81461190594611
-trying to break an addiction,6.6,2.9641930905334255
-"user wants to know how David works, she says they're an AI programmed in compassionate listening",8.2,0.44721359549995776
+,temp,temp,top_p,top_p,tokens,tokens,level_0,level_0,index,index,response_length,response_length
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std
+topic,,,,,,,,,,,,
+taking care of an old pet with medical issues,0.0,0.0,0.0,0.0,500.0,0.0,0.0,0.0,0.0,,8.0,

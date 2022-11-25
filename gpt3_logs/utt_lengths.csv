@@ -1,8 +1,4 @@
-,response_length,response_length
-,mean,std
-Utterance,,
-"Hi Daniel, how can I best help you today?",9.186046511627907,5.759282893935643
-"Hi Daniel, how can I help?",10.207087486157254,6.1269166095017
-"Hi Daniel, what brings you here today?",13.060908084163898,5.7230666867383935
-"Hi, what can I help you with today?",9.191583610188262,4.254885809791518
-"Hi, what's on your mind?",11.218161683277962,5.352540701435698
+,temp,temp,top_p,top_p,tokens,tokens,level_0,level_0,index,index,response_length,response_length
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std
+utterance,,,,,,,,,,,,
+"Hi Daniel, what brings you here today?",0.0,0.0,0.0,0.0,500.0,0.0,0.0,0.0,0.0,,8.0,
