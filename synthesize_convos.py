@@ -31,6 +31,39 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
 base_prompt = open_file('syn_prompt2.txt')
 
+def gpt3_5_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
+    max_retry = 5
+    retry = 0
+    while True:
+        try:
+            messages=[{"role": "user", "content": f'{prompt}'}]
+
+            response = openai.ChatCompletion.create(
+                engine=engine,
+                message=messages,
+                temperature=temp,
+                max_tokens=tokens,
+                top_p=top_p,
+                frequency_penalty=freq_pen,
+                presence_penalty=pres_pen,
+                stop=stop)
+            text = response['choices'][0]['text'].strip()
+            print('lines = %s' % str(len(text.splitlines(True))))
+            returned_lines = str(len(text.splitlines(True)))
+            filename = '%s_gpt3.txt' % time()
+            with open(wdir + '/%s' % filename, 'w') as outfile:
+                outfile.write('PROMPT:\n\n' + prompt + '\n\n==========\n\nRESPONSE:\n\n' + text)
+            response_info = '{"topic" : "%s",\nengine" : "%s",\ntemp" : "%s",\ntop_p" : "%s",\nfreq_pen" : "%s",\npres_pen" : "%s",\nreturned lines" : "%s" }' % (topic, engine, temp, top_p, freq_pen, pres_pen, returned_lines)
+            data = response_info.split('\n')
+            with open('gpt3_logs/%s' % 'data.log', 'a', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
+            return text
+        except Exception as oops:
+            retry += 1
+            if retry >= max_retry:
+                return "GPT3 error: %s" % oops
+            print(f'Error communicating with OpenAI: {oops}\n')
+            sleep(0.25)
 
 def gpt3_completion(wdir, prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
     max_retry = 5
@@ -61,8 +94,14 @@ def gpt3_completion(wdir, prompt, topic, engine='text-davinci-002', temp=1, top_
             retry += 1
             if retry >= max_retry:
                 return "GPT3 error: %s" % oops
-            print('Error communicating with OpenAI:', oops)
+            print(f'Error communicating with OpenAI: {oops}\n')
             sleep(0.25)
+
+def quality_check(run):
+    filelist = filter(lambda x: (x.endswith('.json')), os.listdir(f'gpt3_logs/{run}.run'))
+    for file in filelist:
+        current_topic = open(file, 'r')
+        print(f'{current_topic}\n')
 
 def compare_cosine(doclist):
     count_vect = CountVectorizer()
@@ -101,16 +140,39 @@ if __name__ == '__main__':
     }
 
     #create a directory for this run in gpt3_logs
+    # filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
+    # for x in filelist:
+    #     print(f'File: {x}')
+    # myList = [i.split('.')[0] for i in filelist]
+    # print(myList)
+    # working_dir = str(int(max(myList))+1) + '.run'
+    # os.mkdir(directory + '/' + working_dir)
+    # print('Creating %s\n' % working_dir)
+
     filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
-    print(filelist)
-    myList = [i.split('.')[0] for i in filelist]
-    print(myList)
-    working_dir = str(int(max(myList))+1) + '.run'
-    os.mkdir(directory + '/' + working_dir)
-    print('Creating %s\n' % working_dir)
+
+    # Find the highest numbered directory
+    highest_number = 0
+    for file in filelist:
+        try:
+            number = int(file.rstrip('.run'))
+            if number > highest_number:
+                highest_number = number
+        except ValueError:
+            pass  # Ignore if the file name is not a number
+
+    # Create a new directory with a number +1 higher than the highest
+    new_dir_number = highest_number + 1
+    new_directory = os.path.join(directory, f"{new_dir_number}.run")
+    
+    print('Creating %s\n' % new_directory)
+
+    os.makedirs(new_directory)
 
     #set the new working directory based on the new working directory name
-    directory = directory + '\\' + working_dir
+    directory = new_directory
+
+    print(f'')
 
     # for severity in vars_df["severity"]:
     #     if type(severity) != str:
@@ -133,7 +195,7 @@ if __name__ == '__main__':
             prompt += utterance
             prompt = str(uuid.uuid4()) + '\n' + prompt
 
-            response = gpt3_completion(directory, prompt, topic)
+            response = gpt3_5_completion(directory, prompt, topic)
             prompt_arr['Response'].append(response)
 
         print('\n---------------------------------\n')
@@ -147,5 +209,6 @@ if __name__ == '__main__':
             'Response': []
         }
         df.to_json(directory + "\\%s__output.json" % (topic))
+        quality_check(new_dir_number)
 
             
