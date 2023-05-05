@@ -31,7 +31,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
 base_prompt = open_file('syn_prompt2.txt')
 
-def gpt3_5_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
+def gpt4_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:
@@ -39,15 +39,15 @@ def gpt3_5_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p
             messages=[{"role": "user", "content": f'{prompt}'}]
 
             response = openai.ChatCompletion.create(
-                engine=engine,
-                message=messages,
+                model=engine,
+                messages=messages,
                 temperature=temp,
                 max_tokens=tokens,
                 top_p=top_p,
                 frequency_penalty=freq_pen,
                 presence_penalty=pres_pen,
                 stop=stop)
-            text = response['choices'][0]['text'].strip()
+            text = response['choices'][0]['message']['content'].strip()
             print('lines = %s' % str(len(text.splitlines(True))))
             returned_lines = str(len(text.splitlines(True)))
             filename = '%s_gpt3.txt' % time()
@@ -65,7 +65,7 @@ def gpt3_5_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p
             print(f'Error communicating with OpenAI: {oops}\n')
             sleep(0.25)
 
-def gpt3_completion(wdir, prompt, topic, engine='text-davinci-002', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
+def gpt3_completion(wdir, prompt, topic, engine='text-davinci-003', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:
@@ -103,17 +103,6 @@ def quality_check(run):
         current_topic = open(file, 'r')
         print(f'{current_topic}\n')
 
-def compare_cosine(doclist):
-    count_vect = CountVectorizer()
-    for a, b in itertools.combinations(doclist, 2):
-        corpus = [a,b]
-        X_train_counts = count_vect.fit_transform(corpus)
-        pd.DataFrame(X_train_counts.toarray(),columns=count_vect.get_feature_names(),index=['Document 1','Document 2'])
-        vectorizer = TfidfVectorizer()
-        trsfm=vectorizer.fit_transform(corpus)
-        pd.DataFrame(trsfm.toarray(),columns=vectorizer.get_feature_names(),index=['Document 1','Document 2'])
-        cosine_similarity(trsfm[0:1], trsfm)
-
 if __name__ == '__main__':
     # default prompt attributes
     brothers = "no brothers"
@@ -138,16 +127,6 @@ if __name__ == '__main__':
         'Utterance': [],
         'Response': []
     }
-
-    #create a directory for this run in gpt3_logs
-    # filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
-    # for x in filelist:
-    #     print(f'File: {x}')
-    # myList = [i.split('.')[0] for i in filelist]
-    # print(myList)
-    # working_dir = str(int(max(myList))+1) + '.run'
-    # os.mkdir(directory + '/' + working_dir)
-    # print('Creating %s\n' % working_dir)
 
     filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
 
@@ -195,7 +174,7 @@ if __name__ == '__main__':
             prompt += utterance
             prompt = str(uuid.uuid4()) + '\n' + prompt
 
-            response = gpt3_5_completion(directory, prompt, topic)
+            response = gpt4_completion(directory, prompt, topic)
             prompt_arr['Response'].append(response)
 
         print('\n---------------------------------\n')
