@@ -106,7 +106,7 @@ if __name__ == '__main__':
     myList = [i.split('.')[0] for i in filelist]
     print(myList)
     working_dir = str(int(max(myList))+1) + '.run'
-    os.mkdir(directory + '\\' + working_dir)
+    os.mkdir(directory + '/' + working_dir)
     print('Creating %s\n' % working_dir)
 
     #set the new working directory based on the new working directory name
