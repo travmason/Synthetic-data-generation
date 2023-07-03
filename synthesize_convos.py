@@ -143,7 +143,7 @@ if __name__ == '__main__':
     # Create a new directory with a number +1 higher than the highest
     new_dir_number = highest_number + 1
     new_directory = os.path.join(directory, f"{new_dir_number}.run")
-    
+
     print('Creating %s\n' % new_directory)
 
     os.makedirs(new_directory)
