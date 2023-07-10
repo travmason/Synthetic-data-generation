@@ -32,7 +32,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
 base_prompt = open_file('score_prompt.txt')
 
-def gpt4_completion(wdir, prompt, topic, engine='gpt-3.5-turbo-16k', temp=0.2, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
+def gpt4_completion(wdir, prompt, topic, engine='gpt-4', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:
@@ -73,7 +73,7 @@ def score(filepath):
         conversation = file.read()
     prompt = base_prompt.replace('<<CONVERSATION>>', conversation)
     prompt_arr['Prompt'].append(prompt)            
-
+    # print(f'Prompt: {prompt}\n')
     response = gpt4_completion("", prompt, "score")
     prompt_arr['Response'].append(response)
 
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     # print(f'')
 
     # Directory path containing the JSON files
-    directory_path = 'gpt3_logs/40.run'
+    directory_path = 'gpt3_logs/41.run'
 
     response = []
     loopcount = 0
@@ -125,9 +125,9 @@ if __name__ == '__main__':
             response.append(score(file_path).strip())
             print(f"Score: {response[-1]}")
             print(f"Loopcount: {loopcount}")
-        if loopcount > 4:
-            break
-        loopcount += 1
+        # if loopcount > 4:
+        #     break
+        # loopcount += 1
     with open('gpt3_logs/%s' % 'score.log', 'a', encoding='utf-8') as f:
         json.dump(response, f, indent=4)
 

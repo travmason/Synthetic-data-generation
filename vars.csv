@@ -1,11 +1,9 @@
 ﻿severity,brothers,sisters,alone,topic
 mild,no,no,lives,family violence
 severe,one,one,doesn't live,suicide
-extreme,two,two,,about a friend dying suddenly
-crippling,three,three,,loneliness from being single
-,four,four,,difficult family members
 ,,,,struggling with anxiety
 ,,,,coping with depression
+,,,,childhood trauma
 ,,,,anger control issues
 ,,,,road rage
 ,,,,"the user is sad and becomes suicidal but the counsellor gently encourages them to call a friend, a family member, or emergency services"
@@ -37,7 +35,8 @@ crippling,three,three,,loneliness from being single
 ,,,,being a workaholic
 ,,,,applying to university
 ,,,,navigating office politics
-,,,,childhood trauma
 ,,,,recovering from serious injuries
 ,,,,having an angry spouse
-,,,,"user wants to know how David works, she says they're an AI programmed in compassionate listening"
+extreme,two,two,,about a friend dying suddenly
+crippling,three,three,,loneliness from being single
+,four,four,,difficult family members

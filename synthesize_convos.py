@@ -111,15 +111,13 @@ if __name__ == '__main__':
     alone = "lives"
     topic = "depression"
 
-    topics = open_file('topics.txt').splitlines()
+    #topics = open_file('topics.txt').splitlines()
     vars_df = pd.read_csv('vars.csv')
 
     first_utterance = open_file('utterances.txt').splitlines()
     utterance_loop = len(first_utterance)
 
     directory = 'gpt3_logs'
-    loops = 0
-    utt_loop = 0
     raw_utterance = "\nUser: <<UTT>>\nDaniel:"
     prompt_arr = {
         'Prompt':[], 
@@ -153,14 +151,18 @@ if __name__ == '__main__':
 
     print(f'')
 
+    num_topics = 0
     # for severity in vars_df["severity"]:
     #     if type(severity) != str:
     #         exit()
-    #     print("Severity: %s\n" % severity)
+
     for topic in vars_df["topic"]:
         if type(topic) != str:
             break
         print("Topic: %s\n" % topic)
+        if num_topics > 5:
+            break
+        num_topics += 1
 
         for utterance in first_utterance:
             if type(utterance) != str:
@@ -174,7 +176,7 @@ if __name__ == '__main__':
             prompt += utterance
             prompt = str(uuid.uuid4()) + '\n' + prompt
 
-            response = gpt4_completion(directory, prompt, topic)
+            response = gpt4_completion(directory, prompt, topic, engine="gpt-4")
             prompt_arr['Response'].append(response)
 
         print('\n---------------------------------\n')
