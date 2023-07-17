@@ -189,7 +189,7 @@ if __name__ == '__main__':
             'Utterance': [],
             'Response': []
         }
-        df.to_json(directory + "\\%s__output.json" % (topic))
-        quality_check(new_dir_number)
+        df.to_json(directory + "/%s_output.json" % (topic))
+        #quality_check(new_dir_number)
 
             

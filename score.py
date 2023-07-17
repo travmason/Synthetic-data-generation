@@ -30,7 +30,8 @@ def save_convo(text, topic):
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
-base_prompt = open_file('score_prompt.txt')
+#base_prompt = open_file('score_prompt.txt')
+base_prompt = open_file('score_prompt_counselling_competancys.txt')
 
 def gpt4_completion(wdir, prompt, topic, engine='gpt-4', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0, stop=['<<END>>']):
     max_retry = 5
@@ -53,7 +54,7 @@ def gpt4_completion(wdir, prompt, topic, engine='gpt-4', temp=1, top_p=1.0, toke
         except Exception as oops:
             retry += 1
             if retry >= max_retry:
-                return "GPT3 error: %s" % oops
+                return "GPT error: %s" % oops
             print(f'Error communicating with OpenAI: {oops}\n')
             sleep(0.25)
 
@@ -86,31 +87,31 @@ if __name__ == '__main__':
     # we're going to use this to create a new directory for the current run
     # filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
 
-    # # Find the highest numbered directory
-    # highest_number = 0
-    # for file in filelist:
-    #     try:
-    #         number = int(file.rstrip('.run'))
-    #         if number > highest_number:
-    #             highest_number = number
-    #     except ValueError:
-    #         pass  # Ignore if the file name is not a number
+    filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
 
-    # # Create a new directory with a number +1 higher than the highest
-    # new_dir_number = highest_number + 1
-    # new_directory = os.path.join(directory, f"{new_dir_number}.run")
+    # Find the highest numbered directory
+    highest_number = 0
+    for file in filelist:
+        try:
+            number = int(file.rstrip('.run'))
+            if number > highest_number:
+                highest_number = number
+        except ValueError:
+            pass  # Ignore if the file name is not a number
 
-    # print('Creating %s\n' % new_directory)
+    # Create a new directory with a number +1 higher than the highest
+    new_dir_number = highest_number + 1
+    new_directory = os.path.join(directory, f"{new_dir_number}.run")
 
-    # os.makedirs(new_directory)
+    print('Creating %s\n' % new_directory)
 
-    # #set the new working directory based on the new working directory name
-    # directory = new_directory
+    os.makedirs(new_directory)
 
-    # print(f'')
+    #set the new working directory based on the new working directory name
+    directory = new_directory
 
     # Directory path containing the JSON files
-    directory_path = 'gpt3_logs/41.run'
+    directory_path = 'gpt3_logs/43.run'
 
     response = []
     loopcount = 0

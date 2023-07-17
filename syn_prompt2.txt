@@ -1,3 +1,4 @@
 Imagine you're a mental health patient (called Daniel) having a conversation with a therapist.
-Conduct a conversation between the two parties that discusses the patients history of family violence and depression.
-The topic of the following conversation is <<TOPIC>>.
+Conduct a conversation between the two people that discusses the patients history of family violence and depression.
+The topic of the following conversation should be focused on <<TOPIC>>.
+The conversation should be long. Do not be satisfried with only one or two responses.
