@@ -7,10 +7,10 @@ data = []
 
 # Open the file and read the data
 with open('gpt3_logs/score.log', 'r') as file:
-    json_strings = json.load(file)
+    data = json.load(file)
 
 # Convert the JSON strings to Python dictionaries
-data = [json.loads(js) for js in json_strings]
+# data = [json.loads(js) for js in json_strings]
 
 # Get the keys from the first dictionary to use as labels
 labels = list(data[0].keys())
@@ -105,12 +105,15 @@ plt.tight_layout()
 ###
 # The x position of the bars
 x = np.arange(len(labels))
+print(f'x: {x}')
 
 # Create subplots to have multiple bars
 fig, ax = plt.subplots()
 
+print(f'len(data): {len(data)}')
 # Plot data
 for i in range(len(data)):
+    print(f'i: {i}')
     ax.bar(x + i/len(data), scores[i], width=1/len(data), label=f'Data {i+1}')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
@@ -125,4 +128,4 @@ plt.xticks(rotation=45)
 plt.tight_layout() # # Adjust layout to avoid overlapping labels
 
 # Show the plot
-#plt.show()
+plt.show()

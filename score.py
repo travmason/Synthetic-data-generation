@@ -2,15 +2,8 @@ import os
 import openai
 from time import time,sleep
 from dotenv import load_dotenv
-import pandas as pd
 import json
-import uuid
-import math
-import itertools
-
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+import re
 
 try:
     load_dotenv()  # take environment variables from .env.
@@ -27,13 +20,12 @@ def save_convo(text, topic):
     with open('finetuning/%s_%s.txt' % (topic, time()), 'w', encoding='utf-8') as outfile:
         outfile.write(text)
 
-
 openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
 #base_prompt = open_file('score_prompt.txt')
 base_prompt = open_file('score_prompt_counselling_competancys.txt')
 
-def gpt4_completion(wdir, prompt, topic, engine='gpt-4', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0, stop=['<<END>>']):
+def gpt4_completion(wdir, prompt, topic, engine='gpt-3.5-turbo-16k', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:
@@ -77,6 +69,8 @@ def score(filepath):
     # print(f'Prompt: {prompt}\n')
     response = gpt4_completion("", prompt, "score")
     prompt_arr['Response'].append(response)
+    response = response.replace('\n', '')
+    response = response.strip()
 
     return response
 
@@ -99,22 +93,20 @@ if __name__ == '__main__':
         except ValueError:
             pass  # Ignore if the file name is not a number
 
-    # Create a new directory with a number +1 higher than the highest
-    new_dir_number = highest_number + 1
-    new_directory = os.path.join(directory, f"{new_dir_number}.run")
-
-    print('Creating %s\n' % new_directory)
-
-    os.makedirs(new_directory)
-
-    #set the new working directory based on the new working directory name
-    directory = new_directory
+    #set the new working directory based on the working directory name
+    directory = os.path.join(directory, f"{highest_number}.run")
 
     # Directory path containing the JSON files
-    directory_path = 'gpt3_logs/43.run'
+    directory_path = directory
+    log_file = directory_path.split('/')[1].split('.')[0]
+    log_file = log_file + '_score.log'
+    print(f'Log file: {log_file}')
+    print(f'Directory path: {directory_path}')
+    print(f'Full path: {os.path.join(directory_path, log_file)}')
 
     response = []
     loopcount = 0
+    text = ""
 
     # Iterate over each file in the directory
     for filename in os.listdir(directory_path):
@@ -123,14 +115,18 @@ if __name__ == '__main__':
             file_path = os.path.join(directory_path, filename)
             print(f"Processing {file_path}")
             # Process the file
-            response.append(score(file_path).strip())
-            print(f"Score: {response[-1]}")
-            print(f"Loopcount: {loopcount}")
-        # if loopcount > 4:
-        #     break
-        # loopcount += 1
-    with open('gpt3_logs/%s' % 'score.log', 'a', encoding='utf-8') as f:
-        json.dump(response, f, indent=4)
+            text = score(file_path)                        
+            print(f"Response: {text}")
 
+            text = text.split('{')[0].strip()
+            text = fixed_data = re.sub(r',(\s*})', r'\1', text)
+            response.append(json.loads(text))
 
-        
+            #sleep(5)
+
+        if loopcount > 2:
+            break
+        loopcount += 1
+
+    with open(os.path.join(directory_path, log_file), 'w') as f:
+        json.dump(response, f, ensure_ascii=False, indent=4)
