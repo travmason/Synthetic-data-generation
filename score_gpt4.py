@@ -31,7 +31,7 @@ prompt_version = os.getenv("PROMPT_VERSION")
 #base_prompt = open_file('score_prompt.txt')
 base_prompt = open_file('score_prompt_counselling_competancys.txt')
 
-def gpt4_completion(wdir, prompt, topic, engine='gpt-3.5-turbo-16k', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0, stop=['<<END>>']):
+def gpt4_completion(wdir, prompt, topic, engine='gpt-4', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:

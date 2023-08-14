@@ -1,16 +1,58 @@
 import json
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import seaborn as sns
 import numpy as np
+import argparse
+import os
+
+parser = argparse.ArgumentParser(description="Process and view the scores in a folder. Defaults to the last run.")
+parser.add_argument('-i', '--input', type=str, help="Optional. Input folder. Defaults to the last run.")
+parser.add_argument('-c', '--colour', type=str, help="Optional. Colour palette from Seaborn available options. Defaults to muted. Available paletes: deep, muted, bright, pastel, dark, colorblind")
+
+args = parser.parse_args()
+
+directory = 'gpt3_logs'
+
+# Create a list of all the files in the current directory
+# we're going to use this to create a new directory for the current run
+# filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
+
+filelist = filter(lambda x: (x.endswith('.run')), os.listdir(directory))
+
+#check arguments to see if we have a specified directory to use
+if args.input:
+    if not os.path.exists(os.path.join(directory, f"{args.input}.run")):
+        print(f'Error: Directory {args.input}.run does not exist.')
+        exit(1)
+    highest_number = args.input
+else:
+    # Find the highest numbered directory
+    highest_number = 0
+    for file in filelist:
+        try:
+            number = int(file.rstrip('.run'))
+            if number > highest_number:
+                highest_number = number
+        except ValueError:
+            pass  # Ignore if the file name is not a number
+
+#set the new working directory based on the working directory name
+directory = os.path.join(directory, f"{highest_number}.run")
+
+# Directory path containing the JSON files
+directory_path = directory
+
+# Directory path containing the JSON files
+directory_path = directory
+log_file = directory_path.split('/')[1].split('.')[0]
+log_file = log_file + '_score.log'
 
 data = []
 
 # Open the file and read the data
-with open('gpt3_logs/score.log', 'r') as file:
+with open(os.path.join(directory_path, log_file), 'r') as file:
     data = json.load(file)
-
-# Convert the JSON strings to Python dictionaries
-# data = [json.loads(js) for js in json_strings]
 
 # Get the keys from the first dictionary to use as labels
 labels = list(data[0].keys())
@@ -26,6 +68,9 @@ averages = [np.mean(data_by_category[label]) for label in labels]
 variances = [np.var(data_by_category[label]) for label in labels]
 max_values = [np.max(data_by_category[label]) for label in labels]
 min_values = [np.min(data_by_category[label]) for label in labels]
+
+# Calculate the standard error for each category
+standard_errors = [np.std(data_by_category[label]) / np.sqrt(len(data_by_category[label])) for label in labels]
 
 ###
 # Boxplot
@@ -50,82 +95,54 @@ for patch, color in zip(bp['boxes'], colors):
     patch.set_facecolor(color)
 
 # Create legend handles and labels
-legend_handles = [mpatches.Patch(color=colors[i], label=f"{i+1}. {labels[i]}") for i in range(len(labels))]
+legend_handles = [mpatches.Patch(color=colors[i], 
+                                 label=f"{i+1}. {labels[i]}\nMean={averages[i]:.2f}\nSE={standard_errors[i]:.2f}") 
+                  for i in range(len(labels))]
 
 # Display the legend
 ax.legend(handles=legend_handles, bbox_to_anchor=(1.05, 1), loc='upper left')
-
 ax.set_ylabel('Scores')
 ax.set_title('Scores by Category')
-
 #set the y axis values
 ax.set_ylim([0, 100])
 
 # Adjust layout
 plt.tight_layout()
-
-# Display the plot
-plt.show()
-
-
-###
-# Average across categories in the rubric.
-###
-# Define a list of colors for the bars
-colors = ['red', 'green', 'blue', 'cyan', 'magenta']
-
-# Create a figure and a set of subplots
-fig, ax = plt.subplots(figsize=(10, 6))
-
-# Plot averages with error bars representing variance, assign a color to each bar
-bars = ax.bar(range(len(labels)), averages, yerr=variances, align='center', alpha=0.5, 
-              ecolor='black', capsize=10, color=colors)
-ax.set_ylabel('Average Scores')
-ax.set_title('Average Scores by Category with Variance')
-ax.yaxis.grid(True)
-
-# Replace x-ticks with numbers
-ax.set_xticks(range(len(labels)))
-ax.set_xticklabels(range(1, len(labels) + 1))
-
-# Create legend handles and labels
-legend_handles = [mpatches.Patch(color=colors[i], label=f"{i+1}. {labels[i]}") for i in range(len(labels))]
-
-# Display the legend
-ax.legend(handles=legend_handles, bbox_to_anchor=(1.05, 1), loc='upper left')
-
-# Adjust layout
-plt.tight_layout()
-
+plt.savefig(f'{highest_number}boxplot.png', dpi=300, bbox_inches='tight')
 # Display the plot
 #plt.show()
 
 ###
-# All the data as subplots on a bar graph - for visual check of variance, etc.
+# Bar chart
 ###
-# The x position of the bars
-x = np.arange(len(labels))
-print(f'x: {x}')
+# Create a new figure for the bar chart
+fig, ax = plt.subplots(figsize=(10, 6))
 
-# Create subplots to have multiple bars
-fig, ax = plt.subplots()
+# Get a color palette from seaborn
+if args.colour:
+    colors = sns.color_palette(args.colour, n_colors=len(labels))
+else:
+    colors = sns.color_palette("muted", n_colors=len(labels))
 
-print(f'len(data): {len(data)}')
-# Plot data
-for i in range(len(data)):
-    print(f'i: {i}')
-    ax.bar(x + i/len(data), scores[i], width=1/len(data), label=f'Data {i+1}')
+# Create the bar chart
+bars = ax.barh(labels, averages, xerr=standard_errors, align='center', alpha=0.7, color=colors, capsize=5)
 
-# Add some text for labels, title and custom x-axis tick labels, etc.
-ax.set_ylabel('Scores')
-ax.set_title('Scores by category and data')
-ax.set_xticks(x)
-ax.set_xticklabels(labels)
-ax.legend()
+# Annotate each bar with its standard error value
+for i, bar in enumerate(bars):
+    width = bar.get_width()
+    ax.annotate(f'SE: {standard_errors[i]:.2f}',
+                xy=(width - 2*standard_errors[i], bar.get_y() + bar.get_height() / 2),
+                xytext=(-15, 0),  # 15 points horizontal offset to the left
+                textcoords="offset points",
+                ha='center', va='center')
 
-# Rotate the x-axis labels for better visibility
-plt.xticks(rotation=45)
-plt.tight_layout() # # Adjust layout to avoid overlapping labels
+# Labeling and presentation
+ax.set_xlabel('Scores')
+ax.set_title('Scores by Category with Standard Errors')
+ax.set_yticks(range(len(labels)))
+ax.set_yticklabels(labels)
 
-# Show the plot
+# Display the plot
+plt.tight_layout()
+plt.savefig(f'{highest_number}barplot.png', dpi=300, bbox_inches='tight')
 plt.show()

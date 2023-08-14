@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 import pandas as pd
 import json
 import uuid
-import math
-import itertools
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -31,7 +29,10 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
 base_prompt = open_file('syn_prompt2.txt')
 
-def gpt4_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
+#gpt_model = 'gpt-3.5-turbo'
+gpt_model = 'gpt-4'
+
+def gpt4_completion(wdir, prompt, topic, engine=gpt_model, temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
     max_retry = 5
     retry = 0
     while True:
@@ -48,6 +49,7 @@ def gpt4_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p=1
                 presence_penalty=pres_pen,
                 stop=stop)
             text = response['choices'][0]['message']['content'].strip()
+            print(f'{response["usage"]["prompt_tokens"]} prompt tokens used.')
             print('lines = %s' % str(len(text.splitlines(True))))
             returned_lines = str(len(text.splitlines(True)))
             filename = '%s_gpt3.txt' % time()
@@ -61,7 +63,7 @@ def gpt4_completion(wdir, prompt, topic, engine='gpt-3.5-turbo', temp=1, top_p=1
         except Exception as oops:
             retry += 1
             if retry >= max_retry:
-                return "GPT3 error: %s" % oops
+                return "GPT error: %s" % oops
             print(f'Error communicating with OpenAI: {oops}\n')
             sleep(0.25)
 
@@ -141,11 +143,8 @@ if __name__ == '__main__':
     # Create a new directory with a number +1 higher than the highest
     new_dir_number = highest_number + 1
     new_directory = os.path.join(directory, f"{new_dir_number}.run")
-
     print('Creating %s\n' % new_directory)
-
     os.makedirs(new_directory)
-
     #set the new working directory based on the new working directory name
     directory = new_directory
 
