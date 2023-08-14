@@ -67,38 +67,6 @@ def gpt4_completion(wdir, prompt, topic, engine=gpt_model, temp=1, top_p=1.0, to
             print(f'Error communicating with OpenAI: {oops}\n')
             sleep(0.25)
 
-def gpt3_completion(wdir, prompt, topic, engine='text-davinci-003', temp=1, top_p=1.0, tokens=3500, freq_pen=0.0, pres_pen=0.5, stop=['<<END>>']):
-    max_retry = 5
-    retry = 0
-    while True:
-        try:
-            response = openai.Completion.create(
-                engine=engine,
-                prompt=prompt,
-                temperature=temp,
-                max_tokens=tokens,
-                top_p=top_p,
-                frequency_penalty=freq_pen,
-                presence_penalty=pres_pen,
-                stop=stop)
-            text = response['choices'][0]['text'].strip()
-            print('lines = %s' % str(len(text.splitlines(True))))
-            returned_lines = str(len(text.splitlines(True)))
-            filename = '%s_gpt3.txt' % time()
-            with open(wdir + '/%s' % filename, 'w') as outfile:
-                outfile.write('PROMPT:\n\n' + prompt + '\n\n==========\n\nRESPONSE:\n\n' + text)
-            response_info = '{"topic" : "%s",\nengine" : "%s",\ntemp" : "%s",\ntop_p" : "%s",\nfreq_pen" : "%s",\npres_pen" : "%s",\nreturned lines" : "%s" }' % (topic, engine, temp, top_p, freq_pen, pres_pen, returned_lines)
-            data = response_info.split('\n')
-            with open('gpt3_logs/%s' % 'data.log', 'a', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=4)
-            return text
-        except Exception as oops:
-            retry += 1
-            if retry >= max_retry:
-                return "GPT3 error: %s" % oops
-            print(f'Error communicating with OpenAI: {oops}\n')
-            sleep(0.25)
-
 def quality_check(run):
     filelist = filter(lambda x: (x.endswith('.json')), os.listdir(f'gpt3_logs/{run}.run'))
     for file in filelist:
