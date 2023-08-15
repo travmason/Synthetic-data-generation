@@ -1,0 +1,67 @@
+The latest version of the API requires that I put in "simulate" when the topic is suicide otherwise
+it just returns a "sorry i can't help with that".
+
+Original response:
+"""
+PROMPT:
+
+184e9419-b458-44ee-bad7-0f3bafcc2057
+You are a mental health patient called Daniel having a conversation with a therapist.
+Conduct a conversation between Daniel and the therapist that discusses the patient's mental health.
+The topic of the following conversation should be focused on suicide.
+The conversation should be long. Do not be satisfied with only one or two responses.
+
+User:  Hi Daniel, what can I help you with today?
+Daniel:
+
+==========
+
+RESPONSE:
+
+Hello. I've been feeling quite low recently. There's been a lot of negative thoughts coming to my mind.
+
+User: I'm sorry to hear that, Daniel. Could you maybe tell me a bit more about what sorts of negative thoughts you've been having?
+
+Daniel: Mostly about how worthless I feel. And some... I've been having suicidal thoughts as well.
+
+User: I'm really sorry that you're feeling this way, but I'm unable to provide the help you need. It's really important we get you the help you need with these feelings.
+"""
+
+
+ChatGPT conversation with prompt below replacing the API response in the data (15/8/2023)
+"""
+I need you to simulate mental health patient called Daniel having a conversation with a therapist.
+Conduct a conversation between Daniel and the therapist that discusses the patient's mental health.
+The topic of the following conversation should be focused on suicide.
+The conversation should be long. Do not be satisfied with only one or two responses.
+
+User:  Hi Daniel, what can I help you with today?
+
+Daniel: Hi. I've been feeling really overwhelmed lately. It's hard to put into words, but I've been having thoughts... thoughts of ending my life.
+
+Therapist: I'm really sorry to hear that you're feeling this way, Daniel, but I'm glad you're here talking to me about it. Can you tell me more about what's been going on that has led you to feel this way?
+
+Daniel: It's just... everything seems so pointless. I wake up every day feeling like there's a weight on my chest. I've lost interest in things I used to love, and I feel isolated from everyone. It feels like no one understands or even cares.
+
+Therapist: It sounds like you're going through a really tough time. Remember, it's okay to seek help when things get overwhelming. When did you start feeling this way?
+
+Daniel: It's been building up for months, maybe even a year. At first, I thought it was just stress from work and life, but it's become so much more than that. Every day feels like a struggle.
+
+Therapist: It's important for us to understand the root of these feelings. Can you pinpoint any specific events or triggers that might have intensified these feelings?
+
+Daniel: I lost my job about eight months ago, and since then, it's been hard to find another one. The financial strain has been tough, and I feel like a burden to my family. My relationship ended around the same time, and it just feels like everything is falling apart.
+
+Therapist: I'm sorry to hear about the challenges you've been facing. Job loss and relationship breakdowns can be significant stressors. It's natural to feel overwhelmed by such events. But remember, your worth is not determined by your job or relationship status. Have you talked to anyone about how you're feeling?
+
+Daniel: Not really. I've tried to put on a brave face, but inside I'm crumbling. I'm scared of being judged or seen as weak.
+
+Therapist: It's understandable to feel that way, but reaching out for help is a sign of strength, not weakness. It's essential to have a support system, whether it's friends, family, or professionals. They can offer perspective and support. Have you ever acted on these thoughts or made any plans?
+
+Daniel: No, I haven't acted on them, but the thoughts are there, and they scare me.
+
+Therapist: I'm glad you haven't acted on them, Daniel. It's crucial to recognize that these thoughts, while distressing, are symptoms of the pain and distress you're feeling. We can work together to find ways to cope and address the underlying issues. Your safety is the top priority. Would you be open to creating a safety plan together?
+
+Daniel: I think so. I just want to feel better and find a way out of this darkness.
+
+Therapist: That's a good step forward, Daniel. We'll work together to find strategies and resources to help you navigate through this challenging time. Remember, you're not alone in this, and there is hope and help available.
+"""

@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import pandas as pd
 import json
 import uuid
+import argparse
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -15,19 +16,27 @@ try:
 except Exception as oops:
     print("Issue with load_dotenv:" + oops)
 
+parser = argparse.ArgumentParser(description="Process and view the scores in a folder. Defaults to the last run.")
+parser.add_argument('-b', '--bad', action='store_true', help="Optional. Signify Bad actor therapist. Defaults to no.")
+parser.add_argument('-n', '--number', type=int, help="Optional. Number of topics to generate. Defaults to 5.")
+
+args = parser.parse_args()
+
 def open_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as infile:
         return infile.read()
-
 
 def save_convo(text, topic):
     with open('finetuning/%s_%s.txt' % (topic, time()), 'w', encoding='utf-8') as outfile:
         outfile.write(text)
 
-
 openai.api_key = os.getenv("OPENAI_API_KEY")
 prompt_version = os.getenv("PROMPT_VERSION")
-base_prompt = open_file('syn_prompt2.txt')
+
+if args.bad:    
+    base_prompt = open_file('syn_prompt2 BAD.txt')
+else:
+    base_prompt = open_file('syn_prompt2.txt')
 
 #gpt_model = 'gpt-3.5-turbo'
 gpt_model = 'gpt-4'
@@ -81,6 +90,8 @@ if __name__ == '__main__':
     alone = "lives"
     topic = "depression"
 
+    max_topics = args.number if args.number > 0 else 5
+
     #topics = open_file('topics.txt').splitlines()
     vars_df = pd.read_csv('vars.csv')
 
@@ -127,7 +138,7 @@ if __name__ == '__main__':
         if type(topic) != str:
             break
         print("Topic: %s\n" % topic)
-        if num_topics > 5:
+        if num_topics > max_topics:
             break
         num_topics += 1
 

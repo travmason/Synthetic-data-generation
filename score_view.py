@@ -132,15 +132,22 @@ for i, bar in enumerate(bars):
     width = bar.get_width()
     ax.annotate(f'SE: {standard_errors[i]:.2f}',
                 xy=(width - 2*standard_errors[i], bar.get_y() + bar.get_height() / 2),
-                xytext=(-15, 0),  # 15 points horizontal offset to the left
+                xytext=(40, 0),  # 15 points horizontal offset to the left
                 textcoords="offset points",
-                ha='center', va='center')
+                ha='center', va='baseline')
 
 # Labeling and presentation
 ax.set_xlabel('Scores')
 ax.set_title('Scores by Category with Standard Errors')
 ax.set_yticks(range(len(labels)))
 ax.set_yticklabels(labels)
+
+ax.spines[['right', 'top', 'bottom']].set_visible(False) 
+ax.xaxis.set_visible(False)
+
+ax.bar_label(bars, padding=-85, color='black', 
+             fontsize=12, label_type='center', fmt='%.1f',
+            fontweight='bold')
 
 # Display the plot
 plt.tight_layout()
