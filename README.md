@@ -1,6 +1,6 @@
 # Conversation generator for counsellor / patient analysis
 
-This finetuning project was for a chatbot project that I am no longer pursuing. For samples, check out the finetuning directory.
+I have synthasis and scoring going on here.
 
 ## Synthesis
 
@@ -11,6 +11,16 @@ TODO:
 - Output formatting
 - Embed more personal information into Daniel (is this how we do that? Generate Finetune data and have it in the model itself?)
 - more..
+
+## Score
+
+Look at `score.py` and `score_view.py`. I'm using an assessment criteria input through `score_prompt_counselling_competancys.txt` (based on a set of competancies from clinical assessment)
+Pulls in conversations generated from the synthasise convos script and outputs to a set of graphs.
+
+TODO:
+- working on output format consistancy (new data analysis in GPT-4 Turbo should help here)
+- Data Analysis from 'native' gpt-4 release November to improve results?
+- Change criteria based on need, remains of code should stay valid.
 
 ## Example
 
